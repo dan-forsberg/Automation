@@ -1,49 +1,34 @@
 #+OPTIONS: num:nil toc:nil \n:t
+#+LATEX: \setlength\parindent{0pt}
 * Uppgift 1
-För att lösa denna uppgift kommer jag använda mig av följande formler.
+I denna uppgift kommer jag använda mig av Ohms lag
 
-Ohms lag säger att
-
-#+BEGIN{equation}
-$U = I \times R$
-
+$U = R \times I$
 $R = \frac{U}{I}$
-
 $I = \frac{U}{R}$
-#+END
 
-#+BEGIN{equation}
-$P = U \times I =>$
+Och även följande formler för att räkna ut effekt
 
-$P = (I \times R) \times I =>$
+$P = U \times I$
+$P = I^{2} \times R$
+$P = \frac{U^{2}}{R}$
 
-$P = I^2 \times R$
+För att räkna ut ekvivalent motstånd över två parallellkopplade mostånd (lampor) så räknar jag enligt
 
-$P = U \times \frac{U}{R} =>$
+$R_{eq} = R_{1} / / R_{2} = \frac{R_{1} \times R_{2}}{R_{1} + R_{2}}$
 
-$P = \frac{U^2}{R}$
-#+END
+För att räkna ut ekvivalent motstånd över två seriekopplade motstånd (lampor) så räknar jag enligt nedan
 
-Räkna ut ekvivalent resistans när två motstånd är i serie:
+$R_{eq} = R_{1} + R_{2}$
 
-$R_{e} = R_{a} + R_{b}$
+Jag kommer använda mig av Kirchoffs spänningslag
 
-Räkna ut ekvivalent resistans när två motstånd är parallella:
+$u_{1} + u_{2} + ... + u_{n} = 0$
 
-$R_{e} = R_{a} / / R_{B} = \frac{R_{A} \times R_{B}}{R_{A} + R_{B}}$
-
-** Tillvägagångsätt
-För att lösa uppgiftera 1A och 1B kommer jag räkna ut följande steg.
-
-- Räkna ut det totala motståndet (/R_tot/) i hela kretsen
-- Räkna ut den totala strömmen (/I_tot/) i hela kretsen
-- Räkna ut spänningsfallet över den parallellkopplade delen i kretsen (/V_par/)
-- Räkna ut spänningsfallet över den seriekopplade delen i kretsen (/V_serie/)
-- Räkna ut strömmen över A, B, C (/I_A, I_B, I_C/ respektive)
-- Räkna ut effekten över A, B, C (/P_A, P_B, P_C/ respektive)
+Jag kommer även att avrunda till fem decimaler.
+\newpage
 
 * Uppgift 1a
-
 #+CAPTION: Bild på krets med namn på de olika punkterna
 [[./lampor.png]]
 
@@ -57,125 +42,132 @@ Lamporna har enligt uppgiften följande egenskaper
 | L_3   | 24v          | 7w         |
 |-------+--------------+------------|
 
-Från det kan man räkna att deras mostånd är 288,0 \Omega, 192,0 \Omega och 82,286 \Omega.
-Detta kan räknas ut med formeln nedan:
+Motstånden lamporna har kan räknas ut med formeln nedan:
 
-\begin{equation}
 $R = \frac{v^2}{P}$
 
-$R_L_1 = \frac{24^2}{2} = 288$
-
-$R_L_2 = \frac{24^2}{3} = 192$
-
-$R_L_3 = \frac{24^2}{7} = 82,28571$
-\end
+$R_{L1} = \frac{24^2}{2} = 288$
+$R_{L2} = \frac{24^2}{3} = 192$
+$R_{L3} = \frac{24^2}{7} = 82,28571$
 
 | Lampa | Märkspänning | Märkeffekt | Resistans     |
 |-------+--------------+------------+---------------|
 | L_1   | 24v          | 2w         | 288 \Omega    |
 | L_2   | 24v          | 3w         | 192 \Omega    |
 | L_3   | 24v          | 7w         | 82,286 \Omega |
-|-------+--------------+------------+--------------- |
+|-------+--------------+------------+---------------|
 
 ** Lösning
+Då det inte spelar någon roll om $A = L_1, B = L_2$ eller $A = L_2, B = L_1$ då A och B är parallellkopplade så är de enda intressanta fallen de nedan.
 
-Då det inte spelar någon roll om $A = L_1, B = L_2$ eller $A = L_2, B = L_1$ då
-A och B är parallellkopplade så är de enda intressanta fallen de nedan.
-
-| Permutation | A   | B   | C   |
-|-------------+-----+-----+-----|
-| Fall_1      | L_1 | L_2 | L_3 |
-| Fall_2      | L_3 | L_1 | L_2 |
-| Fall_3      | L_2 | L_3 | L_1 |
-|-------------+-----+-----+-----|
-
+| Fall   | A   | B   | C   |
+|--------+-----+-----+-----|
+| Fall 1 | L_1 | L_2 | L_3 |
+| Fall 2 | L_3 | L_1 | L_2 |
+| Fall 3 | L_2 | L_3 | L_1 |
+|--------+-----+-----+-----|
+\newpage
 
 *** Fall 1
-Över $a -> e$ så har vi ett motstånd på...
+Över /a -> e/ så har vi ett motstånd på...
 
-#+BEGIN{equation}
 $R_{ae} = R_{a} / / R_{e} = \frac{R_{a} \times R_{e}}{R_{a} + R_{e}}$
-
 $R_{ae} = \frac{288 \times 192}{288 + 192} = 115,20 \Omega$
-#+END
 
 Sedan tidigare vet vi att R_C = 82.286 \Omega. Så den totala resistansen är
 
-#+BEGIN{equation}
-$R_{tot} = 82,286\Omega + 115,2 \Omega = 197,486 \Omega$
-#+END
+$R_{tot} = R_{C} + R_{ae} = 82,286 + 115,2 = 197,486 \Omega$
 
 Då kan vi räkna ut att I_{tot} blir
 
-#+BEGIN{equation}
-$I_{tot} = \frac{24}{R_{tot}} = 0,12152821733 A \approx 0,12528 A$
-#+END
+$I_{tot} = \frac{V_{tot}}{R_{tot}} = \frac{24}{R_{tot}} = 0,12152821733 A \approx 0,12528 A$
 
-Spänningsfallet över $a -> e$ ($V_{ae}$) går att räkna ut med följande
+Spänningsfallet över /a -> e/ ($V_{ae}$) går att räkna ut med följande
 
-#+BEGIN{equation}
 $V_{ae} = R_{ae} \times I_{ae}$
+$V_{ae} = 115,2 \Omega \times 0,121528 V = 14,0000256 V \approx 14,0 V$
 
-$V_{ae} = 115,2 \Omega \times 0,121528$
-
-$V_{ae} = 14,0000256 V \approx 14,0 V$
-#+END
-
-(Jag kommer att härmed att använda $V_{ae} = 14$)
-
-Då blir spänningsfallet över $V_e_f = V_t_o_t - V_a_e = 10 V$.
-
+Då blir spänningsfallet över $e -> f$, $V_{ef} = V_{tot} - V_{ae} = 10 V$.
 Från detta kan vi räkna ut att
 
-#+BEGIN{equation}
-$I_A = \frac{V_{ae}}{R_A} = \frac{14}{288} = 0.04861111 \approx 0.0486$
+$I_A = \frac{V_{ae}}{R_{A}} = \frac{14}{288} = 0,04861111 \approx 0,04861 A$
+$I_B = \frac{V_{ae}}{R_{B}} = \frac{14}{192} = 0,07291666 \approx 0,07292 A$
+$I_C = \frac{V_c}{R_{C}} = \frac{10}{82,2857} = 0,12152779 \approx 0,12528 A$
 
-$I_B = \frac{V_{ae}}{R_B} = \frac{14}{192} = 0.07291666 \approx 0.0729$
+Då $I_{C} = I_{tot}$ verkar allting stämma.
 
-$I_C = \frac{V_c}{R_C} = \frac{10}{82.2857} = 0.12152779 \approx 0.1252 A = I_t_o_t$
-#+END
+Från det kan vi enkelt räkna ut effekten
 
-Och från det kan vi enkelt räkna ut effekten
-
-#+BEGIN{equation}
-$P_B = V_a_e \times I_A \approx 14 \times 0.0486 = 0.6804 W$
-$P_B = V_a_e \times I_B \approx 14 \times 0.0729 = 1.0206 W$
-$P_C = V_e_f \times I_C \approx 10 \times 0.1252 = 1.2520 W$
-#+END
+$P_B = V_{ae} \times I_A = 14 \times 0.04861 = 0.68054 W$
+$P_B = V_{ae} \times I_B = 14 \times 0.07292 = 1.0206 W$
+$P_C = V_{ef} \times I_C = 10 \times 0.12528 = 1.2520 W$
 
 $L_1$ lyser då med ungefär 34% effekt, alltså *svagt*.
 $L_2$ lyser då med ungefär 34% effekt, alltså *svagt*.
 $L_3$ lyser då med ungefär 17% effekt, alltså *svagt*.
+\newpage
+
 *** Fall 2
 På position $A$ sitter $L_3$, på $B$ sitter $L_1$ och på $C$ sitter $L_2$.
 
-Börja med att räkna ut resistans, totala strömmen och spänningsfallet över de
-"större" delarna i kretsen.
+Börja med att räkna ut resistans, totala strömmen och spänningsfallet över de "större" delarna i kretsen.
 
-\begin{equation}
-$R_{par} = (\frac{1}{82.286} + \frac{1}{288})^-1$
-
-$R_{tot} = R_{par} + R_{L_{2}}$
-
-$I_{tot} = \frac{24}{R_{tot}}$
-
-$V_{par} = R_{par} * I_{tot}$
-
-$V_{ser} = 24 - V_{par}$
-\end{equation}
+$R_{par} = R_{A} / / R_{B} = \frac{82,286 * 288}{82,286 + 288} = 64,0001728394 \approx 64,00017$
+$R_{tot} = R_{par} + R_{C} = 256,00017$
+$I_{tot} = \frac{24}{R_{tot}} = 0,09374993774 \approx 0,09375 A$
+$V_{par} = R_{par} * I_{tot} \approx 6,00001 V$
+$V_{ser} = 24 - V_{par} = 17,99999 V$
 
 Därefter kan vi räkna ut värdena vid de olika lamporna.
 
-\begin{equation}
-$I_{A} = \frac{V_{par}}{R_{A}} = ...$
+$I_{A} = \frac{V_{par}}{R_{A}} \approx 0,07292 A$
+$I_{B} = \frac{V_{par}}{R_{B}} \approx 0,02083 A$
+$I_{C} = \frac{V_{ser}}{R_{C}} \approx 0,09375 A$
+$P_{A} = V_{par} \times I_{A} = 0,43750 W$
+$P_{B} = V_{par} \times I_{B} = 0,12500 W$
+$P_{C} = V_{ser} \times I_{C} = 1,68750 W$
 
-$I_{B} = \frac{V_{par}}{R_{B}} = ...$
+Resultat:
+$A = L_{3}$ lyser med cirka 6% av sin styrka, alltså *lyser inte*.
+$B = L_{1}$ lyser med cirka 6% av sin styrka, alltså *lyser inte*.
+$C = L_{2}$ lyser med cirka 56% av sin styrka, alltså *starkt*.
+\newpage
+*** Fall 3
+På position $A$ sitter $L_2$, på $B$ sitter $L_3$ och på $C$ sitter $L_1$.
 
-$I_{C} = \frac{V_{ser}}{R_{C}} = ...$
+$R_{par} = R_{A} / / R_{B} = \frac{192 * 82,286}{192 + 82,286} \approx 57,60014 \Omega$
+$R_{tot} = R_{par} + R_{C} = 345,60014 \Omega$
+$I_{tot} = \frac{24}{R_{tot}} \approx 0,06944 A$
+$V_{par} = R_{par} * I_{tot} \approx 3,99975 V$
+$V_{ser} = 24 - V_{par} = 20,00025 V$
 
-$P_{A} = V_{par} \times I_{A}$
+Därefter kan vi räkna ut värdena vid de olika lamporna.
 
-$P_{B} = V_{par} \times I_{B}$
+$I_{A} = \frac{V_{par}}{R_{A}} \approx 0,02083 A$
+$I_{B} = \frac{V_{par}}{R_{B}} \approx 0,04860 A$
+$I_{C} = \frac{V_{ser}}{R_{C}} \approx 0,06944 A$
+$P_{A} = V_{par} \times I_{A} \approx 0,08332 W$
+$P_{B} = V_{par} \times I_{B} \approx 0,19442 W$
+$P_{C} = V_{ser} \times I_{C} \approx 1,38892 W$
 
-$P_{C} = V_{ser} \times I_{C}$
-\end{equation}
+Resultat:
+$A = L_{2}$ lyser med cirka 2% av sin styrka, alltså *lyser inte*.
+$B = L_{3}$ lyser med cirka 2% av sin styrka, alltså *lyser inte*.
+$C = L_{1}$ lyser med cirka 69% av sin styrka, alltså *starkt*.
+
+*** Slutresultat
+Summa summarum
+
+| Fall   | A   | B   | C   |
+|--------+-----+-----+-----|
+| Fall 1 | L_1 | L_2 | L_3 |
+| Fall 2 | L_3 | L_1 | L_2 |
+| Fall 3 | L_2 | L_3 | L_1 |
+|--------+-----+-----+-----|
+
+| Fall   | A               | B               | C            |
+|--------+-----------------+-----------------+--------------|
+| Fall 1 | 34% (svagt)     | 34% (svagt)     | 17% (svagt)  |
+| Fall 2 | 6% (lyser inte) | 6% (lyser inte) | 56% (starkt) |
+| Fall 3 | 2% (lyser inte) | 2% (lyser inte) | 69% (lyser starkt) |
+|--------+-----------------+-----------------+--------------|
