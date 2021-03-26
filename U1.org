@@ -47,8 +47,7 @@ För att lösa uppgiftera 1A och 1B kommer jag räkna ut följande steg.
 #+CAPTION: Bild på krets med namn på de olika punkterna
 [[./lampor.png]]
 
-
-** Definition av lamporna
+** Lampornas egenskaper
 Lamporna har enligt uppgiften följande egenskaper
 
 | Lampa | Märkspänning | Märkeffekt |
@@ -95,41 +94,43 @@ A och B är parallellkopplade så är de enda intressanta fallen de nedan.
 Över $a -> e$ så har vi ett motstånd på...
 
 #+BEGIN{equation}
-$R_a_e = (\frac{1}{288} + \frac{1}{192})^-^1$
+$R_{ae} = R_{a} / / R_{e} = \frac{R_{a} \times R_{e}}{R_{a} + R_{e}}$
 
-$R_a_e = 115.2 \Omega$
+$R_{ae} = \frac{288 \times 192}{288 + 192} = 115,20 \Omega$
 #+END
 
-Sedan tidigare vet vi att R_C = 82.286\Omega. Så den totala resistansen är
+Sedan tidigare vet vi att R_C = 82.286 \Omega. Så den totala resistansen är
 
 #+BEGIN{equation}
-$R_t_o_t = 82.286\Omega + 115.2 \Omega = 197.485 \Omega$
+$R_{tot} = 82,286\Omega + 115,2 \Omega = 197,486 \Omega$
 #+END
 
-Då kan vi räkna ut att I_t_o_t blir
+Då kan vi räkna ut att I_{tot} blir
 
 #+BEGIN{equation}
-$I_t_o_t = \frac{24}{R_t_o_t} = 0.12152821733 A \approx 0.1252 A$
+$I_{tot} = \frac{24}{R_{tot}} = 0,12152821733 A \approx 0,12528 A$
 #+END
 
-Spänningsfallet över $a -> e$ ($V_a_e$) går att räkna ut med följande
+Spänningsfallet över $a -> e$ ($V_{ae}$) går att räkna ut med följande
 
 #+BEGIN{equation}
-$V_a_e = R_a_e \times I_a_e$
+$V_{ae} = R_{ae} \times I_{ae}$
 
-$V_a_e = 115.2 \Omega \times 0.12152821733$
+$V_{ae} = 115,2 \Omega \times 0,121528$
 
-$V_a_e = 14.00005 V \approx 14 V$
+$V_{ae} = 14,0000256 V \approx 14,0 V$
 #+END
+
+(Jag kommer att härmed att använda $V_{ae} = 14$)
 
 Då blir spänningsfallet över $V_e_f = V_t_o_t - V_a_e = 10 V$.
 
 Från detta kan vi räkna ut att
 
 #+BEGIN{equation}
-$I_A = \frac{V_a_e}{R_A} = \frac{14}{288} = 0.04861111 \approx 0.0486$
+$I_A = \frac{V_{ae}}{R_A} = \frac{14}{288} = 0.04861111 \approx 0.0486$
 
-$I_B = \frac{V_a_e}{R_B} = \frac{14}{192} = 0.07291666 \approx 0.0729$
+$I_B = \frac{V_{ae}}{R_B} = \frac{14}{192} = 0.07291666 \approx 0.0729$
 
 $I_C = \frac{V_c}{R_C} = \frac{10}{82.2857} = 0.12152779 \approx 0.1252 A = I_t_o_t$
 #+END
