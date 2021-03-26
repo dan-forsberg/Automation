@@ -1,0 +1,180 @@
+#+OPTIONS: num:nil toc:nil \n:t
+* Uppgift 1
+För att lösa denna uppgift kommer jag använda mig av följande formler.
+
+Ohms lag säger att
+
+#+BEGIN{equation}
+$U = I \times R$
+
+$R = \frac{U}{I}$
+
+$I = \frac{U}{R}$
+#+END
+
+#+BEGIN{equation}
+$P = U \times I =>$
+
+$P = (I \times R) \times I =>$
+
+$P = I^2 \times R$
+
+$P = U \times \frac{U}{R} =>$
+
+$P = \frac{U^2}{R}$
+#+END
+
+Räkna ut ekvivalent resistans när två motstånd är i serie:
+
+$R_{e} = R_{a} + R_{b}$
+
+Räkna ut ekvivalent resistans när två motstånd är parallella:
+
+$R_{e} = R_{a} / / R_{B} = \frac{R_{A} \times R_{B}}{R_{A} + R_{B}}$
+
+** Tillvägagångsätt
+För att lösa uppgiftera 1A och 1B kommer jag räkna ut följande steg.
+
+- Räkna ut det totala motståndet (/R_tot/) i hela kretsen
+- Räkna ut den totala strömmen (/I_tot/) i hela kretsen
+- Räkna ut spänningsfallet över den parallellkopplade delen i kretsen (/V_par/)
+- Räkna ut spänningsfallet över den seriekopplade delen i kretsen (/V_serie/)
+- Räkna ut strömmen över A, B, C (/I_A, I_B, I_C/ respektive)
+- Räkna ut effekten över A, B, C (/P_A, P_B, P_C/ respektive)
+
+* Uppgift 1a
+
+#+CAPTION: Bild på krets med namn på de olika punkterna
+[[./lampor.png]]
+
+
+** Definition av lamporna
+Lamporna har enligt uppgiften följande egenskaper
+
+| Lampa | Märkspänning | Märkeffekt |
+|-------+--------------+------------|
+| L_1   | 24v          | 2w         |
+| L_2   | 24v          | 3w         |
+| L_3   | 24v          | 7w         |
+|-------+--------------+------------|
+
+Från det kan man räkna att deras mostånd är 288,0 \Omega, 192,0 \Omega och 82,286 \Omega.
+Detta kan räknas ut med formeln nedan:
+
+\begin{equation}
+$R = \frac{v^2}{P}$
+
+$R_L_1 = \frac{24^2}{2} = 288$
+
+$R_L_2 = \frac{24^2}{3} = 192$
+
+$R_L_3 = \frac{24^2}{7} = 82,28571$
+\end
+
+| Lampa | Märkspänning | Märkeffekt | Resistans     |
+|-------+--------------+------------+---------------|
+| L_1   | 24v          | 2w         | 288 \Omega    |
+| L_2   | 24v          | 3w         | 192 \Omega    |
+| L_3   | 24v          | 7w         | 82,286 \Omega |
+|-------+--------------+------------+--------------- |
+
+** Lösning
+
+Då det inte spelar någon roll om $A = L_1, B = L_2$ eller $A = L_2, B = L_1$ då
+A och B är parallellkopplade så är de enda intressanta fallen de nedan.
+
+| Permutation | A   | B   | C   |
+|-------------+-----+-----+-----|
+| Fall_1      | L_1 | L_2 | L_3 |
+| Fall_2      | L_3 | L_1 | L_2 |
+| Fall_3      | L_2 | L_3 | L_1 |
+|-------------+-----+-----+-----|
+
+
+*** Fall 1
+Över $a -> e$ så har vi ett motstånd på...
+
+#+BEGIN{equation}
+$R_a_e = (\frac{1}{288} + \frac{1}{192})^-^1$
+
+$R_a_e = 115.2 \Omega$
+#+END
+
+Sedan tidigare vet vi att R_C = 82.286\Omega. Så den totala resistansen är
+
+#+BEGIN{equation}
+$R_t_o_t = 82.286\Omega + 115.2 \Omega = 197.485 \Omega$
+#+END
+
+Då kan vi räkna ut att I_t_o_t blir
+
+#+BEGIN{equation}
+$I_t_o_t = \frac{24}{R_t_o_t} = 0.12152821733 A \approx 0.1252 A$
+#+END
+
+Spänningsfallet över $a -> e$ ($V_a_e$) går att räkna ut med följande
+
+#+BEGIN{equation}
+$V_a_e = R_a_e \times I_a_e$
+
+$V_a_e = 115.2 \Omega \times 0.12152821733$
+
+$V_a_e = 14.00005 V \approx 14 V$
+#+END
+
+Då blir spänningsfallet över $V_e_f = V_t_o_t - V_a_e = 10 V$.
+
+Från detta kan vi räkna ut att
+
+#+BEGIN{equation}
+$I_A = \frac{V_a_e}{R_A} = \frac{14}{288} = 0.04861111 \approx 0.0486$
+
+$I_B = \frac{V_a_e}{R_B} = \frac{14}{192} = 0.07291666 \approx 0.0729$
+
+$I_C = \frac{V_c}{R_C} = \frac{10}{82.2857} = 0.12152779 \approx 0.1252 A = I_t_o_t$
+#+END
+
+Och från det kan vi enkelt räkna ut effekten
+
+#+BEGIN{equation}
+$P_B = V_a_e \times I_A \approx 14 \times 0.0486 = 0.6804 W$
+$P_B = V_a_e \times I_B \approx 14 \times 0.0729 = 1.0206 W$
+$P_C = V_e_f \times I_C \approx 10 \times 0.1252 = 1.2520 W$
+#+END
+
+$L_1$ lyser då med ungefär 34% effekt, alltså *svagt*.
+$L_2$ lyser då med ungefär 34% effekt, alltså *svagt*.
+$L_3$ lyser då med ungefär 17% effekt, alltså *svagt*.
+*** Fall 2
+På position $A$ sitter $L_3$, på $B$ sitter $L_1$ och på $C$ sitter $L_2$.
+
+Börja med att räkna ut resistans, totala strömmen och spänningsfallet över de
+"större" delarna i kretsen.
+
+\begin{equation}
+$R_{par} = (\frac{1}{82.286} + \frac{1}{288})^-1$
+
+$R_{tot} = R_{par} + R_{L_{2}}$
+
+$I_{tot} = \frac{24}{R_{tot}}$
+
+$V_{par} = R_{par} * I_{tot}$
+
+$V_{ser} = 24 - V_{par}$
+\end{equation}
+
+Därefter kan vi räkna ut värdena vid de olika lamporna.
+
+\begin{equation}
+$I_{A} = \frac{V_{par}}{R_{A}} = ...$
+
+$I_{B} = \frac{V_{par}}{R_{B}} = ...$
+
+$I_{C} = \frac{V_{ser}}{R_{C}} = ...$
+
+$P_{A} = V_{par} \times I_{A}$
+
+$P_{B} = V_{par} \times I_{B}$
+
+$P_{C} = V_{ser} \times I_{C}$
+\end{equation}
