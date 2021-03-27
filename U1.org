@@ -28,7 +28,7 @@ $u_{1} + u_{2} + ... + u_{n} = 0$
 Jag kommer även att avrunda till fem decimaler.
 \newpage
 
-* Uppgift 1a
+* Uppgift 1 a
 #+CAPTION: Bild på krets med namn på de olika punkterna
 [[./lampor.png]]
 
@@ -171,3 +171,45 @@ Summa summarum
 | Fall 2 | 6% (lyser inte) | 6% (lyser inte) | 56% (starkt) |
 | Fall 3 | 2% (lyser inte) | 2% (lyser inte) | 69% (lyser starkt) |
 |--------+-----------------+-----------------+--------------|
+* Uppgift 1 b
+I princip samma uppgift som uppgift 1a men här kopplas två glödlampor (25 W,
+230V resp. 60 W, 230 V) i serie och ansluts sedan till spänningen 230V (inte 24V
+som ovan). Även här blir det naturligtvis lägre spänning för varje lampa så att
+lamporna kommer att lysa olika starkt. Svara på samma sätt som i uppgift 1a.
+
+** Lampornas egenskaper
+
+För att förenkla så bestämmer jag att $L_1$ är 25W, $L_2$ är 60W.
+
+$R = \frac{U}{I}$
+$R_{L1} = \frac{230}{R_{L1}} = 2116 \Omega$
+$R_{L2} = \frac{230}{R_{L2}} = 881.\overline{6} \approx 882 \Omega$
+
+$R_{tot} = R_{L1} + R_{L2} = 2998 \Omega$
+
+Då strömmen är den samma över seriekopplingar så är I_{tot} samma I_{L1} och I_{L2}
+
+$I_{tot} = \frac{U_{tot}}{R_{tot}} = \frac{230}{2998} \approx 0.07672 A$
+
+Därefter spänningsfallet över första och andra lampan för att räkna ut vilken
+effekt de får ut.
+
+$U_{L1} = R_{L1} * I_{tot} = 2116 * 0.07672 = 162.33952$
+$U_{L2} = R_{L2} * I_{tot} = 882 * 0.07672 = 67.66704$
+
+Bara för att rimlighetstesta $230 - (U_{L1} + U_{L2}) \approx -0.00655 \approx
+0$
+
+Det ser ut att stämma, det är förväntat att det blir lite fel iom avrundningen,
+men det är nära nog 0.
+
+$P_{L1} = I_{tot} * U_{L1} = 0.07672 \times 162.33952 \approx 12 W$
+$P_{L2} = I_{tot} * U_{L2} = 0.07672 \times 67.66704 \approx 5 W$
+
+$L1$ lyser alltså med $\frac{12}{20} = 60%$
+$L2$ lyser alltså med $\frac{5}{60} \approx 8%$
+
+Byter vi plats på $L1$ och $L2$ så kommer varken $R_{tot}$ eller $I_{tot}$
+ändras, bara $U_{L1}$ och $U_{L2}$.
+
+$U_{L1} =
