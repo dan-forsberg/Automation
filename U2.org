@@ -1,0 +1,29 @@
+* Känt:
+f = 50 Hz
+U_R = 30 V
+U_L = 80 V
+U_C = 120 V
+-----------------------------------------------------------
+Beräkna U
+
+Använda KVL
+30+80+120 = 230 V
+*U_{tot} = 230V*
+-----------------------------------------------------------
+Då det är seriekopplat så delar alla kopplingar på samma ström.
+
+I_R = U/R = 30/60 = 0.5 A
+*I_{tot} = 0.5A*
+------------------------------------------------------------
+Om U_L = 80 och I_{tot} = 0.5, så måste ju resistansen från L vara 160 \Omega.
+$80 = 0.5 * 160$
+$X_{L} = 160 \Omega$
+$X_{L} = 2\pi * f * L$
+$160 = 2\pi * 50 * L$
+$L = \frac{160}{2\pi * 50}$
+$L \approx 0.50929 H$
+
+Rimligt.
+------------------------------------------------------------
+
+Nej, du har helt fel. Räkna om, räkna rätt.
