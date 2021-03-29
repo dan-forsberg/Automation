@@ -52,10 +52,10 @@ $U_{C} = I \times X_{C} => X_{C} = U_{C} / I$
 
 Vi vet redan $U_{L}$ och $U_{C}$.
 
-$X_{L} = U_{L} / I = 80 V / 1.5 A = 160 \Omega$
-$X_{C} = U_{C} / I = 120 V / 1.5 A = 240 \Omega$
+$X_{L} = U_{L} / I = 80 V / 3.833 A = 20.871 \Omega$
+$X_{C} = U_{C} / I = 120 V / 3.833 A = 31.307 \Omega$
 
-*Svar: $I = 1.5 A$, $X_{L} = 160 \Omega$ och $X_{C} = 240 \Omega$.*
+*Svar: $I = 3.833 A$, $X_{L} = 20.871 \Omega$ och $X_{C} = 31.307 \Omega$.*
 
 /c) Nedan finns en ny krets. Beräkna resonansfrekvensen f./
 
