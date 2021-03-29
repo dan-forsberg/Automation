@@ -1,29 +1,96 @@
-* Känt:
-f = 50 Hz
-U_R = 30 V
-U_L = 80 V
-U_C = 120 V
------------------------------------------------------------
-Beräkna U
+* Uppgift 2
+I denna uppgift kommer jag använda mig utav följande formler.
 
-Använda KVL
-30+80+120 = 230 V
-*U_{tot} = 230V*
------------------------------------------------------------
-Då det är seriekopplat så delar alla kopplingar på samma ström.
+$I = \frac{U}{R}$
+$I = \frac{U}{Z}$
 
-I_R = U/R = 30/60 = 0.5 A
-*I_{tot} = 0.5A*
-------------------------------------------------------------
-Om U_L = 80 och I_{tot} = 0.5, så måste ju resistansen från L vara 160 \Omega.
-$80 = 0.5 * 160$
-$X_{L} = 160 \Omega$
-$X_{L} = 2\pi * f * L$
-$160 = 2\pi * 50 * L$
-$L = \frac{160}{2\pi * 50}$
-$L \approx 0.50929 H$
+$X_{L} = 2\pifL$
+$X_{C} = \frac{1}{2\pifC}$
 
-Rimligt.
-------------------------------------------------------------
+$U_{L} = X_{L} \times I$
+$U_{C} = X_{C} \times I$
 
-Nej, du har helt fel. Räkna om, räkna rätt.
+$Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}$
+
+$f = \frac{1}{2\pi\sqrt{LC}}$
+
+Även Kirchoffs spänningslag.
+
+$\sum{U_{1} + U_{2} + ... + U_{n}} = 0$
+\newpage
+
+** Uppgifterna och lösningar
+/a) En krets består av motståndet R=60 Ohm, spolen L (okänd), kondensatorn C (okänd) och en växelströmsgenerator med effektivvärdet U (okänt) med frekvensen f=50 Hz, se figur./
+
+#+CAPTION: Bild på krets 1
+[[./krets2.png]]
+/Samtliga värden i figuren är effektivvärden och angivna med två värdesiffror. Räkna ut U./
+
+*Svar: Enligt KVL är spänning $U_{rms} = U_{R} + U_{L} + U_{C} = 230V$.*
+\newpage
+
+/b) Beräkna strömmen, reaktansen och impedansen i kretsen ovan./
+
+Då komponenterna är seriekopplade så är strömmen samma över de alla tre. (Stämmer detta? Rimlighetstest pls) Vi kan då räkna ut $I_{R}$ rätt enkelt.
+
+$I_{R} = \frac{30}{60} = 1.5 A$
+
+Reaktansen och impedansen går enkelt att räkna ut genom att flytta om lite i formlerna nedan.
+
+$U_{L} = I \times X_{L} => X_{L} = U_{L} / I$
+$U_{C} = I \times X_{C} => X_{C} = U_{C} / I$
+
+Vi vet redan $U_{L}$ och $U_{C}$.
+
+$X_{L} = U_{L} / I = 80 V / 1.5 A = 160 \Omega$
+$X_{C} = U_{C} / I = 120 V / 1.5 A = 240 \Omega$
+
+*Svar: $I = 1.5 A$, $X_{L} = 160 \Omega$ och $X_{C} = 240 \Omega$.*
+
+/c) Nedan finns en ny krets. Beräkna resonansfrekvensen f./
+
+[[./krets3.png]]
+
+$f = \frac{1}{2\pi\sqrt{LC}}$
+$f = \frac{1}{2\pi\sqrt{80*10^{-3} \times 2*10^{-6}}}$
+$f = 397.8873577 \approx 397.887 Hz$
+
+*Svar: resonansfrekvensen är /ungefär/ 397.887 Hz*
+
+/d) Om U = 90 V, vad blir strömmen I i den nya kretsen. Använd frekvensen du räknade ut i c/
+
+Vi vet att
+
+$I = \frac{U}{Z}$
+$Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}$
+
+Men vi vet inte $X_{L}$ eller $X_{C}$.
+
+$X_{L} = 2\pifL$
+$X_{L} = 2\pi \ times 397.887 \times 0.08$
+$X_{L} \approx 199.998 \Omega$
+
+$X_{C} = \frac{1}{2\pifC}$
+$X_{C} = \frac{1}{2\pi \times 397.887 \times 2*10^{-6}}$
+$X_{C} \approx 0.005 \Omega$
+
+$Z = sqrt{60^{2} + (199.998 - 0.005)^{2}}$
+$Z \approx 208.756$
+
+$I = \frac{90}{208.756}$
+$I \approx 0.43 A$
+
+*Svar: I = 0.43 A*
+
+/e) Beräkna även U_R, U_L och U_C för den nya kretsen. Använd frekvensen du räknade ut i c/
+
+$U_{R} = I * R$
+$U_{R} = 0.43 A * 60 \Omega = 2.85 V$
+
+$U_{L} = I * X_{L}$
+$U_{L} = 0.43 A * 199.998 \Omega = 8,60V$
+
+$U_{C} = I * X_{C}$
+$U_{C} = 0.43 A * 0.005 \Omega = 8.98 V$
+
+*Svar: U_R = 2.85 V, U_L = 8.60 V, U_C = 8.98 V*
