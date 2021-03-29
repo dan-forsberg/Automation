@@ -27,13 +27,23 @@ $\sum{U_{1} + U_{2} + ... + U_{n}} = 0$
 /Samtliga värden i figuren är effektivvärden och angivna med två värdesiffror. Räkna ut U./
 
 *Svar: Enligt KVL är spänning $U_{rms} = U_{R} + U_{L} + U_{C} = 230V$.*
-\newpage
 
 /b) Beräkna strömmen, reaktansen och impedansen i kretsen ovan./
 
-Då komponenterna är seriekopplade så är strömmen samma över de alla tre. (Stämmer detta? Rimlighetstest pls) Vi kan då räkna ut $I_{R}$ rätt enkelt.
+Då komponenterna är seriekopplade så är strömmen samma över de alla tre. Då det inte finns mycket annan information att gå på så antar jag att $f$ är resonansfrekvensen.
 
-$I_{R} = \frac{30}{60} = 1.5 A$
+$I = \frac{U}{Z}$
+$Z = sqrt{R^{2} + (R_{L} - R_{C})^{2}}
+
+Däremot så är $R_{C} = R_{L}$ vid resonansfrekvensen, så...
+
+$Z = R$
+
+Därmed
+
+$I = \frac{230}{60} = 3.833 a$
+
+*DUBBELKOLLA IFALL I = 1.5 ELLER 3.833!!*
 
 Reaktansen och impedansen går enkelt att räkna ut genom att flytta om lite i formlerna nedan.
 
