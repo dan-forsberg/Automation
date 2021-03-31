@@ -17,15 +17,15 @@ Från detta kan man även räkna ut motstånd ifall $U$ och $P$ är känt.
 
 $R = \frac{U^2}{P}$
 
-För att räkna ut ekvivalent motstånd över två parallellkopplade mostånd (lampor) så räknar jag enligt
+För att räkna ut ekvivalent motstånd över två parallellkopplade motstånd (lampor) så räknar jag enligt:
 
 $R_{eq} = R_{1} / / R_{2} = \frac{R_{1} \times R_{2}}{R_{1} + R_{2}}$
 
-För att räkna ut ekvivalent motstånd över två seriekopplade motstånd (lampor) så räknar jag enligt nedan
+För att räkna ut ekvivalent motstånd över två seriekopplade motstånd (lampor) så räknar jag enligt:
 
 $R_{eq} = R_{1} + R_{2}$
 
-Jag kommer även använda mig av Kirchoffs spänningslag
+Jag kommer även använda mig av Kirchoffs spänningslag:
 
 $u_{1} + u_{2} + ... + u_{n} = 0$
 
@@ -75,32 +75,31 @@ Då det inte spelar någon roll om $A = L_{2W}, B = L_{3W}$ eller $A = L_{3W}, B
 *** Fall 1
 På position $A$ sitter $L_{2W}$, på $B$ sitter $L_{3W}$ och på $C$ sitter $L_{7W}$.
 
-Över /a -> e/ så har vi ett motstånd på...
+Över /a -> e/ så har vi ett motstånd på 115,20 \Omega, se uträkningen nedan.
 
 $R_{ae} = R_{a} / / R_{e} = \frac{R_{a} \times R_{e}}{R_{a} + R_{e}}$
 $R_{ae} = \frac{288 \times 192}{288 + 192} = 115,20 \Omega$
 
-Sedan tidigare vet vi att R_C = 82,286 \Omega. Så den totala resistansen är
+Sedan tidigare vet vi att R_C = 82,286 \Omega. Så den totala resistansen är 197,486 \Omega. Se uträkning nedan.
 
 $R_{tot} = R_{C} + R_{ae} = 82,286 + 115,2 = 197,486 \Omega$
 
-Då kan vi räkna ut att I_{tot} blir
+Då kan vi räkna ut att I_{tot} blir 0,121 A. Se uträkningen nedan.
 
 $I_{tot} = \frac{V_{tot}}{R_{tot}} = \frac{24}{197,486} \approx 0,121 A$
 
-Spänningsfallet över /a -> e/ ($V_{ae}$) går att räkna ut med följande
+Spänningsfallet över /a -> e/ ($V_{ae}$) går att räkna ut till 13,939 V.
 
 $V_{ae} = R_{ae} \times I_{ae}$
 $V_{ae} = 115,2 \Omega \times 0,121 = 13,939 V$
 
-Då blir spänningsfallet över $e -> f$, $V_{ef} = V_{tot} - V_{ae} = 10,061V$.
-Från detta kan vi räkna ut strömmen:
+Då blir spänningsfallet över $e -> f$, $V_{ef} = V_{tot} - V_{ae} = 10,061V$. Från detta kan vi räkna ut strömmarna över I_A, I_B och I_C:
 
 $I_A = \frac{V_{ae}}{R_{A}} = \frac{13,939}{288} \approx 0,049 A$
 $I_B = \frac{V_{ae}}{R_{B}} = \frac{13,939}{192} \approx 0,073 A$
 $I_C = \frac{V_c}{R_{C}} = \frac{10,061}{82,286} \approx 0,122 A$
 
-*Rimlighetstest*: $I_{A} + I_{B} = I_{C} \approx I_{tot}$, differens = 0,001. Uträkningar verkar rimliga.x
+*Rimlighetstest*: $I_{A} + I_{B} = I_{C} \approx I_{tot}$, differens = 0,001. Uträkningar verkar rimliga.
 
 Från det kan vi enkelt räkna ut effekten:
 
@@ -108,6 +107,7 @@ $P_B = V_{ae} \times I_A = 13,939 \times 0,049 = 0,683 W$
 $P_B = V_{ae} \times I_B = 13,939 \times 0,073 = 1,017 W$
 $P_C = V_{ef} \times I_C = 10,061 \times 0,125 = 1,257 W$
 
+*Svar*
 $A = L_{2W}$ lyser då med ungefär 34% effekt, alltså *svagt*.
 $B = L_{3W}$ lyser då med ungefär 34% effekt, alltså *svagt*.
 $C = L_{7W}$ lyser då med ungefär 17% effekt, alltså *svagt*.
@@ -126,19 +126,19 @@ $I_{tot} = \frac{V_{tot}}{R_{tot}} = \frac{24}{256} = 0,09375 \approx 0,094 A$
 $V_{ae} = R_{ae} * I_{tot} = 64 * 0,094 = 6,016 V$
 $V_{ef} = 24 - V_{ae} = 24 - 6,016 = 17,984 V$
 
-Därefter kan vi räkna ut värdena vid de olika lamporna.
+Därefter kan vi räkna ut strömmen vid de olika lamporna.
 
 $I_{A} = \frac{V_{ae}}{R_{A}} = \frac{6,016}{82,286} \approx 0,073 A$
 $I_{B} = \frac{V_{ae}}{R_{B}} = \frac{6,016}{288} \approx 0,021 A$
 $I_{C} = \frac{V_{ef}}{R_{C}} = \frac{17,984}{192}} \approx 0,094 A$
 
-*Rimlighetstest*: $I_{A} + I_{B} = I_{C} = I_{tot}$ allting verkar helt rimligt.
+*Rimlighetstest*: $I_{A} + I_{B} = I_{C} = I_{tot}$ det verkar helt rimligt.
 
 $P_{A} = V_{ae} \times I_{A} = 6,016 \times 0,073 \approx 0,439 W$
 $P_{B} = V_{ae} \times I_{B} = 6,016 \times 0,021 \approx 0,126 W$
 $P_{C} = V_{ef} \times I_{C} = 17,984 \times 0,094 \approx 1,169 W$
 
-Resultat:
+*Svar*:
 $A = L_{7W}$ lyser med cirka 6% av sin styrka, alltså *lyser inte*.
 $B = L_{2W}$ lyser med cirka 6% av sin styrka, alltså *lyser inte*.
 $C = L_{3W}$ lyser med cirka 39% av sin styrka, alltså *svagt*.
@@ -149,7 +149,9 @@ På position $A$ sitter $L_{3W}$, på $B$ sitter $L_{7W}$ och på $C$ sitter $L_
 
 $R_{ae} = R_{A} / / R_{B} = \frac{192 * 82,286}{192 + 82,286} \approx 57,600 \Omega$
 $R_{tot} = R_{ae} + R_{C} = 345,600 \Omega$
+
 $I_{tot} = \frac{24}{R_{tot}} \approx 0,069 A$
+
 $V_{ae} = R_{ae} * I_{tot} = 3,\overline{9} \approx 4 V$
 $V_{ef} = 24 - V_{ae} = 20 V$
 
@@ -159,11 +161,13 @@ $I_{A} = \frac{V_{ae}}{R_{A}} \approx 0,021 A$
 $I_{B} = \frac{V_{ae}}{R_{B}} \approx 0,049 A$
 $I_{C} = \frac{V_{ef}}{R_{C}} \approx 0,069 A$
 
+*Rimlighetstest*: $I_{A} + I_{B} \approx I_{C} = I_{tot}$. Det är en viss skillnad mellan $I_{A} + I_{B}$ och $I_{C}$, men det är förväntat med avrundning. Det verkar rimligt.
+
 $P_{A} = V_{ae} \times I_{A} \approx 0,084 W$
 $P_{B} = V_{ae} \times I_{B} \approx 0,196 W$
 $P_{C} = V_{ef} \times I_{C} \approx 1,380 W$
 
-Resultat:
+*Svar*:
 $C = L_{3w}$ lyser med cirka 2% av sin styrka, alltså *lyser inte*.
 $B = L_{7w}$ lyser med cirka 2% av sin styrka, alltså *lyser inte*.
 $C = L_{2w}$ lyser med cirka 69% av sin styrka, alltså *starkt*.
@@ -189,36 +193,34 @@ Summa summarum
 /I princip samma uppgift som uppgift 1a men här kopplas två glödlampor (25 W, 230V resp. 60 W, 230 V) i serie och ansluts sedan till spänningen 230V (inte 24V som ovan). Även här blir det naturligtvis lägre spänning för varje lampa så att lamporna kommer att lysa olika starkt. Svara på samma sätt som i uppgift 1a./
 
 ** Lampornas egenskaper
-Lamporna har en effekt på 25W och 60W. Jag börjar med att räkna ut deras respektive motstånd. Då de är seriekopplade så kommer det inte spela någon roll huruvuda $L_{60W} -> L_{25W}$ eller $L_{25W} -> L_{60W}$.
+Lamporna har en effekt på 25W och 60W. Jag börjar med att räkna ut deras respektive motstånd. Därefter det totala motståndet. Då de är seriekopplade så kommer det inte spela någon roll huruvuda $L_{60W} -> L_{25W}$ eller $L_{25W} -> L_{60W}$.
 
 $R = \frac{U^2}{P}$
 
 $R_{25w} = \frac{230^2}{25} = 2116 \Omega$
 $R_{60w} = \frac{230^2}{60} = 881,\overline{6} \approx 882 \Omega$
-$R_{tot} = R_{25w} + R_{60w} = 2998 \Omega$
+
+$R_{tot} = R_{25w} + R_{60w} = 2116 \Omega + 882 \Omega = 2998 \Omega$
 
 ** Lösning
-Från detta kan vi räkna ut $I_{tot}$
+Från detta kan vi räkna ut $I_{tot} = 0,77 A$. Se uträkningen nedan.
 
-$I_{tot} = \frac{U_{tot}}{R_{tot}} = \frac{230}{2998} \approx 0.,77 A$
+$I_{tot} = \frac{U_{tot}}{R_{tot}} = \frac{230}{2998} \approx 0,77 A$
 
 Med detta kan vi enkelt räkna ut spänningsfallet över de två lamporna
 
 $U = R \times I$
-$U_{25w} = R_{25w} \times I_{tot} = 162,932 V$
-$U_{60w} = R_{60w} \times I_{tot} = 67,914 V$
+$U_{25w} = R_{25w} \times I_{tot} = 2116 \Omega \times 0,77 A = 162,932 V$
+$U_{60w} = R_{60w} \times I_{tot} = 882 \Omega \times 0,77 A = 67,914 V$
 
 *Rimlighetstest*
-$\frac{U_{25W} + U_{60W}}{U_{tot}} \approx 1,0037 \approx 100%$
-
+$\frac{U_{25W} + U_{60W}}{U_{tot}} \approx 1,0037 \approx 1$
 Det verkar rimligt, det är en viss differens pga avrundning men inte avsevärd.
 
-\newpage
 Då kan vi enkelt räkna ut effekten över lamporna.
 
 $P = U \times I$
-$P_{25W} = U_{25W} \times I_{tot} \approx 12,546$
-$P_{60W} = U_{60W} \times I_{tot} \approx 5,229$
+$P_{25W} = U_{25W} \times I_{tot} = 162,932 V \times 0,77 A \approx 12,546$
+$P_{60W} = U_{60W} \times I_{tot} = 67,914 V \times 0,77 A \approx 5,229$
 
-** Slutresultat
-$L_{25W}$ lyser med ca 50% styrka, $L_{60W}$ lyser med ca 8%.
+*Svar*: $L_{25W}$ lyser med ca 50% styrka, $L_{60W}$ lyser med ca 8%.
