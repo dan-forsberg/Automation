@@ -41,7 +41,7 @@ $U_{tot} = \sqrt{U_{R}^{2} + (U_{L} - U_{C})^{2}}$
 $U_{tot} = \sqrt{30^{2} + (80-120)^{2}}$
 $U_{tot} = 50 V$
 
-*Svar: $U$ = 50 V*.
+*Svar: $U$ = 50.00 V*.
 
 /b) Beräkna strömmen, reaktansen och impedansen i kretsen ovan./
 
@@ -75,7 +75,7 @@ $I = .5$
 
 Vilket stämmer med det vi tidigare räknat ut.
 
-*Svar: $I$ = 0.5 A, $X_{L}$ = 160 \Omega och $X_{C}$ = 240 \Omega.*
+*Svar: $I$ = 0.500 A, $X_{L}$ = 160.00 \Omega och $X_{C}$ = 240.00 \Omega.*
 
 /c) Nedan finns en ny krets. Beräkna resonansfrekvensen f./
 
@@ -147,8 +147,8 @@ $U_{C} = 0.43 A * 0.005 \Omega = 8.98 V$
 *Svar: U_R = 2.85 V, U_L = 8.60 V, U_C = 8.98 V*
 
 ** Svar
-a) 50 V
-b) I = 0.5 A, X_L = 160 \Omega och X_C = 240 \Omega
+a) 50.00 V
+b) I = 0.50 A, X_L = 160.00 \Omega och X_C = 240.00 \Omega
 c) Resonansfrekvensen är ungefär 397.887 Hz.
 d) 0.43 A
 e) U_R = 2.85 V, U_L = 8.60 V och U_C = 8.98 V
