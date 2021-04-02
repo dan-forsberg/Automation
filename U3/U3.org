@@ -1,0 +1,78 @@
+#+OPTIONS: num:nil toc:nil \n:t
+#+LATEX: \setlength\parindent{0pt}
+* Uppgift 3
+** Uppgiften
+
+*** Specifikation
+ I ett tryckeri finns olika motorer och annan elutrustning som en elektriker en
+ gång i tiden har kopplat in. I sin iver att göra allting ”riktigt bra” kopplade
+ denne in en faskompenserande kondensator som var på tok för stor med avsikten
+ ”att kunna växa och slippa köpa till extra kondensator senare då man skall
+ utvidga”. Följande finns:
+ -Lysrör på totalt 5.0 kW med cosφ = 0,707107 (ind)
+ -Elmotorer på totalt 10 kW med cosφ = 0,80 (ind)
+ -Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
+ 5,5 kW (med cosφ = 1,0)
+ -En faskompenserande kondensator på totalt 20 kVAr
+
+ *Notera 5.0 kW och 10 kW*
+
+*** A
+a) Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S
+samt total effektfaktor cosφ är för befintlig anläggning.  Ledning: Observera
+att cosφ blir kapacitiv (mot normalt induktiv)
+
+*** B
+ b) Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW
+med cosφ = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
+0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
+Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
+(utöver tidigare kondensator/kondensatorer) och hur stor skall i så fall denna
+nya (extra kondensator) i så fall vara mätt i [kVAr]?
+
+*** C
+ c) En tid senare köper företaget in ytterligare 3 st nya elmotorer av samma
+sort som i uppgift b). Efter inkopplingen skall totala effektfaktorn vara minst
+0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
+Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
+(utöver tidigare kondensator/kondensatorer) och hur stor skall iså fall denna
+nya (extra kondensator) i så fall vara mätt i [kVAr]?
+
+*** D
+ d) Egenkontroll (som skall redovisas):  Summera nu ihop P och Q för alla
+komponenter som nu finns efter uppgift c), dvs lysrör, elmotorer, resistiva
+elapparater, original faskompenserande kondensator, 3 st nya Elmotorer,
+eventuell extra faskompenserande kondensator, ytterligare 3 st nya Elmotorer
+samt eventuell ytterligare extra faskompenserande kondensator.
+
+(OBS! Summera allt från början. Utnyttja inte delresultat ovan!)Beräkna totala
+cosφ igen och kontrollera att det blir 0,95. Om det inte blir 0,95 så gå igenom
+beräkningarna igen innan du lämnar in. (Om du kör fast och inte hittar felet så
+får du naturligtvis lämna in ändå för att få vägledning.)
+
+** Lösning
+*** A
+Det finns lysrör på totalt 5.0 kW med PF 0.707107 (ind)
+Det finns elmotorer på totalt 10 kW cos PF = 0.80 (ind)
+Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart
+resisitiv)
+En faskompenserande kondensator på totalt 20 kVAr
+
+$S (skenbar) = UI$
+$P (aktiv)   = UI * cos \phi W \;\;\; <=> S * cos \phi$
+$Q (reaktiv) = UI * sin \phi VAr \;\;\; <=> S * sin \phi$$
+
+$\phi = arccos(0.707107) = 44.99998227$
+$P_{lysrör} = 5.0 kW$
+$S_{lysrör} = \frac{P_{lysrör}}{cos \phi} = \frac{5.0 kW}{0.707107} = 7.071 kVA$
+$Q_{lysrör} = S * sin \phi = 7071.065 * sin \phi = 4.999 kVAr$
+
+$\phi = arccos(0.8)$
+$P_{elmotorer} = 10 kW$
+$S_{elmotorer} = \frac{P_{elmotorer}}{cos \phi} = \frac{10 kW}{0.8} = 8 kVA$
+$Q_{elmotorer} = S * sin \phi = 4.8 kVAr$
+
+$\phi = arccos(1) = 0$
+$P_{apparater} = 5.5 kW$
+$S_{apparater} = 5.5 kVA$ då cos \phi = 1
+$Q_{apparater} = 0 VAr$
