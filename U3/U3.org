@@ -35,7 +35,7 @@ nya (extra kondensator) i så fall vara mätt i [kVAr]?
 sort som i uppgift b). Efter inkopplingen skall totala effektfaktorn vara minst
 0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
 Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
-(utöver tidigare kondensator/kondensatorer) och hur stor skall iså fall denna
+(utöver tidigare kondensator/kondensatorer) och hur stor skall i så fall denna
 nya (extra kondensator) i så fall vara mätt i [kVAr]?
 
 *** D
@@ -54,12 +54,11 @@ får du naturligtvis lämna in ändå för att få vägledning.)
 *** A
 Det finns lysrör på totalt 5.0 kW med PF 0.707107 (ind)
 Det finns elmotorer på totalt 10 kW cos PF = 0.80 (ind)
-Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart
-resisitiv)
+Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart resistiv)
 En faskompenserande kondensator på totalt 20 kVAr
 
-$S (skenbar) = UI$
 $P (aktiv)   = UI * cos \phi W \;\;\; <=> S * cos \phi$
+$S (skenbar) = UI$
 $Q (reaktiv) = UI * sin \phi VAr \;\;\; <=> S * sin \phi$$
 
 $\phi = arccos(0.707107) = 44.99998227$
@@ -76,3 +75,5 @@ $\phi = arccos(1) = 0$
 $P_{apparater} = 5.5 kW$
 $S_{apparater} = 5.5 kVA$ då cos \phi = 1
 $Q_{apparater} = 0 VAr$
+
+Så den totala aktiva effekten bör rimligtvis då vara $P$
