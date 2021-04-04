@@ -57,23 +57,64 @@ Det finns elmotorer på totalt 10 kW cos PF = 0.80 (ind)
 Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart resistiv)
 En faskompenserande kondensator på totalt 20 kVAr
 
+a) Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S
+samt total effektfaktor cosφ är för befintlig anläggning. Ledning: Observera att
+cosφ blir kapacitiv (mot normalt induktiv)
+
+
 $P (aktiv)   = UI * cos \phi W \;\;\; <=> S * cos \phi$
 $S (skenbar) = UI$
-$Q (reaktiv) = UI * sin \phi VAr \;\;\; <=> S * sin \phi$$
+$Q (reaktiv) = UI * sin \phi VAr \;\;\; <=> S * sin \phi$
+$Q = P tan \phi$
 
-$\phi = arccos(0.707107) = 44.99998227$
-$P_{lysrör} = 5.0 kW$
-$S_{lysrör} = \frac{P_{lysrör}}{cos \phi} = \frac{5.0 kW}{0.707107} = 7.071 kVA$
-$Q_{lysrör} = S * sin \phi = 7071.065 * sin \phi = 4.999 kVAr$
+$\phi = arccos(0.707107)$
+$P_{lys} = 5.0 kW$ (lys = lysrör)
+$Q_{lys} = 5.0 * tan(cos^{-1}(0.707107)) \approx 4.999 kVAr (ind)$
 
 $\phi = arccos(0.8)$
-$P_{elmotorer} = 10 kW$
-$S_{elmotorer} = \frac{P_{elmotorer}}{cos \phi} = \frac{10 kW}{0.8} = 8 kVA$
-$Q_{elmotorer} = S * sin \phi = 4.8 kVAr$
+$P_{elm} = 10 kW$ (elm = elmotorer)
+$Q_{elm} = 10 * tan(cos^{-1}(0.8)) = 7.5 kVAr (ind)$
 
 $\phi = arccos(1) = 0$
-$P_{apparater} = 5.5 kW$
-$S_{apparater} = 5.5 kVA$ då cos \phi = 1
-$Q_{apparater} = 0 VAr$
+$P_{app} = 5.5 kW$ (app = vanliga resistiva elapparater)
+$Q_{app} = 0 VAr$
 
-Så den totala aktiva effekten bör rimligtvis då vara $P$
+För att räkna ut de totala effekterna börjar vi att med att addera P och Q var
+för sig. Därifrån kan vi räkna ut S med hjälp av Pythagoras sats.
+
+$P_{tot} = 5.0 kW + 10 kW + 5.5 kW = 20.5 kW$
+$Q_{tot} = 4.999 kVAr + 7.5 kVAr + 0 VAr = 12.499 (ind)$
+
+Men vi har även den faskompenserande kondensatorn på total 20 kVAr, så vi räknar
+in det i $Q_{tot}$. Då den tillhör kapacitiv reaktans så drar jag bort det från
+Q_{tot} som annars är induktiv.
+
+$Q_{tot} = |12.499 (ind) - 20 kVAr (kap)| = 7.501 kVAr (kap)$
+
+Därefter kan vi räkna ut S_{tot}.
+
+$S_{tot} = \sqrt{P_{tot}^{2} + Q_{tot}^{2}}$
+$S_{tot} = \sqrt{20.5^{2} + 7.501^{2}}$
+$S_{tot} \approx 21.829 kVA$
+
+Med hjälp av detta kan vi räkna ut cos \phi för anläggningen. Från
+gymnasiematten kanske man vet att $cos \phi = närliggande / hypotenusa$, vilket i
+det här fallet då är...
+
+$cos \phi = \frac{P}{S}$
+$cos \phi = \frac{20.5}{21.829}$
+$cos \phi = 0.939 (kap)$
+
+*Svar*: $P_{tot} = 20 kW$, $S_{tot} = 6 kVA$, $Q_{tot} = 7 kVAr (kap)$,
+$cos \phi = 0.939 (kap)$.
+
+
+** B
+b) Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW
+med cosφ = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
+0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
+Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
+(utöver tidigare kondensator/kondensatorer) och hur stor skall i så fall denna
+nya (extra kondensator) i så fall vara mätt i [kVAr]?
+
+Innan uppgraderingen vet vi följande.
