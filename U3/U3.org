@@ -9,22 +9,22 @@
  denne in en faskompenserande kondensator som var på tok för stor med avsikten
  ”att kunna växa och slippa köpa till extra kondensator senare då man skall
  utvidga”. Följande finns:
- -Lysrör på totalt 5.0 kW med cosφ = 0,707107 (ind)
- -Elmotorer på totalt 10 kW med cosφ = 0,80 (ind)
- -Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
- 5,5 kW (med cosφ = 1,0)
- -En faskompenserande kondensator på totalt 20 kVAr
+ - Lysrör på totalt 5.0 kW med cos \phi = 0,707107 (ind)
+ - Elmotorer på totalt 10 kW med cos \phi = 0,80 (ind)
+ - Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
+ 5,5 kW (med cos \phi = 1,0)
+ - En faskompenserande kondensator på totalt 20 kVAr
 
  *Notera 5.0 kW och 10 kW*
 
 *** A
 a) Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S
-samt total effektfaktor cosφ är för befintlig anläggning.  Ledning: Observera
-att cosφ blir kapacitiv (mot normalt induktiv)
+samt total effektfaktor cos \phi är för befintlig anläggning.  Ledning: Observera
+att cos \phi blir kapacitiv (mot normalt induktiv)
 
 *** B
  b) Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW
-med cosφ = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
+med cos \phi = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
 0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
 Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
 (utöver tidigare kondensator/kondensatorer) och hur stor skall i så fall denna
@@ -46,7 +46,7 @@ eventuell extra faskompenserande kondensator, ytterligare 3 st nya Elmotorer
 samt eventuell ytterligare extra faskompenserande kondensator.
 
 (OBS! Summera allt från början. Utnyttja inte delresultat ovan!)Beräkna totala
-cosφ igen och kontrollera att det blir 0,95. Om det inte blir 0,95 så gå igenom
+cos \phi igen och kontrollera att det blir 0,95. Om det inte blir 0,95 så gå igenom
 beräkningarna igen innan du lämnar in. (Om du kör fast och inte hittar felet så
 får du naturligtvis lämna in ändå för att få vägledning.)
 
@@ -58,8 +58,8 @@ Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart res
 En faskompenserande kondensator på totalt 20 kVAr
 
 a) Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S
-samt total effektfaktor cosφ är för befintlig anläggning. Ledning: Observera att
-cosφ blir kapacitiv (mot normalt induktiv)
+samt total effektfaktor cos \phi är för befintlig anläggning. Ledning: Observera att
+cos \phi blir kapacitiv (mot normalt induktiv)
 
 OBS: jag kommer inte att expandera 20 kVAr till 20 000 VAr, utan kommer istället
 vara vaksam på att glömma bort "K:et".
@@ -119,7 +119,7 @@ $cos \phi = 0.939 (kap)$.
 
 *** B
 b) Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW
-med cosφ = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
+med cos \phi = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara minst
 0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
 Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande kondensator
 (utöver tidigare kondensator/kondensatorer) och hur stor skall i så fall denna
@@ -223,7 +223,7 @@ $15.5 kVAr (ind) + 22.5 kVAr (ind) = 38 kVAr (ind)$
 Då får vi en PF på...
 
 $\frac{P}{\sqrt{P^2 + Q^2}} = cos \phi$
-$\frac{80}{\sqrt{80^{2} + 38^{2}} = 0.90 (ind)$
+$\frac{80}{\sqrt{80^{2} + 38^{2}}} = 0.90 (ind)$
 $cos \phi = 0.90$
 
 Så en till kondensator kommer att behövas. För att räkna ut ett målvärde på Q
@@ -253,10 +253,10 @@ eventuell extra faskompenserande kondensator, ytterligare 3 st nya Elmotorer
 samt eventuell ytterligare extra faskompenserande kondensator.
 
 Följande finns:
-- Lysrör på totalt 5.0 kW med cosφ = 0,707107 (ind)
-- Elmotorer på totalt 10 kW med cosφ = 0,80 (ind)
+- Lysrör på totalt 5.0 kW med cos \phi = 0,707107 (ind)
+- Elmotorer på totalt 10 kW med cos \phi = 0,80 (ind)
 - Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
-  5,5 kW (med cosφ = 1,0)
+  5,5 kW (med cos \phi = 1,0)
 - En faskompenserande kondensator på totalt 20 kVAr
 
 Sedan uppgraderades anläggningen med tre nya elmotorer på 10 kW vardera, cos
