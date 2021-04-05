@@ -1,0 +1,358 @@
+#+OPTIONS: num:nil toc:nil
+#+LATEX: \setlength\parindent{0pt}
+#+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+AUTHOR: Dan Forsberg
+
+* Uppgift 3
+** Uppgiften
+ I ett tryckeri finns olika motorer och annan elutrustning som en elektriker en
+ gång i tiden har kopplat in. I sin iver att göra allting ”riktigt bra” kopplade
+ denne in en faskompenserande kondensator som var på tok för stor med avsikten
+ ”att kunna växa och slippa köpa till extra kondensator senare då man skall
+ utvidga”. Följande finns:
+
+ - Lysrör på totalt 5.0 kW med cos \phi = 0,707107 (ind)
+ - Elmotorer på totalt 10 kW med cos \phi = 0,80 (ind)
+ - Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
+   5,5 kW (med cos \phi = 1,0)
+ - En faskompenserande kondensator på totalt 20 kVAr
+
+1) Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S
+   samt total effektfaktor cos \phi är för befintlig anläggning. Ledning:
+   Observera att cos \phi blir kapacitiv (mot normalt induktiv)
+
+2) Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW
+   med cos \phi = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara
+   minst 0,95 (ind). *OBS!* Detta skall inte tolkas som 0,96 utan som 0,95 eller
+   högre. Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande
+   kondensator (utöver tidigare kondensator/kondensatorer) och hur stor skall i
+   så fall denna nya (extra kondensator) i så fall vara mätt i [kVAr]?
+
+3) En tid senare köper företaget in ytterligare 3 st nya elmotorer av samma sort
+   som i uppgift b). Efter inkopplingen skall totala effektfaktorn vara minst
+   0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller högre.
+   Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande
+   kondensator (utöver tidigare kondensator/kondensatorer) och hur stor skall i
+   så fall denna nya (extra kondensator) i så fall vara mätt i [kVAr]?
+
+4) Egenkontroll (som skall redovisas): Summera nu ihop P och Q för alla
+   komponenter som nu finns efter uppgift c), dvs lysrör, elmotorer, resistiva
+   elapparater, original faskompenserande kondensator, 3 st nya Elmotorer,
+   eventuell extra faskompenserande kondensator, ytterligare 3 st nya Elmotorer
+   samt eventuell ytterligare extra faskompenserande kondensator.
+
+** Lösning
+*** Deluppgift 1
+ - /Det finns lysrör på totalt 5.0 kW med cos \phi 0.707107 (ind)/
+ - /Det finns elmotorer på totalt 10 kW cos \phi = 0.80 (ind)/
+ - /Det finns vanliga resisitva elapparater på totalt 5.5 kW med PF = 1 (enbart resistiv)/
+ - /En faskompenserande kondensator på totalt 20 kVAr/
+
+a) /Beräkna total aktiv effekt P, total reaktiv effekt Q, totalt skenbar effekt S/
+   /samt total effektfaktor cos \phi är för befintlig anläggning. Ledning:/
+   /Observera att cos \phi blir kapacitiv (mot normalt induktiv)/
+
+*OBS*: jag kommer inte att expandera 20 kVAr till 20 000 VAr, utan kommer istället
+vara vaksam på att glömma bort "K:et".
+
+Trigonometrin säger att $tan \phi = \frac{mostaende katet}{narliggande}$. Om vi
+ställer upp informationen i en effektriangel som nedan så ser vi då att
+$tan \phi = \frac{Q}{P}$. Vi kan då helt enkelt gångra båda sidorna med P och
+får då $tan \phi * P = Q$.
+
+[[./effekt_triangel.png]]
+
+\begin{align*}
+P_{lys} &= 5.0 \,\textrm{kW} \\
+Q_{lys} &= 5.0 * tan(cos^{-1}(0.707107)) \approx 4.999 \,\textrm{kVAr (ind.)}\\
+\\
+P_{elm} &= 10 \,\textrm{kW} \\
+Q_{elm} &= 10 * tan(cos^{-1}(0.8)) = 7.5 \,\textrm{kVAr (ind.)}\\
+\\
+P_{app} &= 5.5 \,\textrm{kW} \\
+Q_{app} &= 0 \,\textrm{kVAr}\\
+\end{align*}
+
+För att räkna ut de totala effekterna börjar vi att med att addera $P$ och $Q$
+var för sig. Därifrån kan vi räkna ut $S$ med hjälp av Pythagoras sats.
+
+\begin{align*}
+P_{tot} &= 5.0 \,\textrm{kW} + 10 \,\textrm{kW} + 5.5 \,\textrm{kW} &&= 20.5 \,\textrm{kW}\\
+Q_{tot} &= 4.99 \,\textrm{kVAr} + 7.5 \,\textrm{kVAr} + 0 \,\textrm{kVAr} &&= 12.499 \,\textrm{kVAr (ind.)}\\
+\end{align*}
+
+Men vi har även den faskompenserande kondensatorn på total 20 kVAr, så vi räknar
+in det i $Q_{tot}$. Då den tillhör kapacitiv reaktans så drar jag bort det från
+$Q_{tot}$ som annars är induktiv. Se bilden nedan för en visualisering
+
+[[./vektorer.png]]
+
+\begin{align*}
+Q_{tot} = |12.499 \,\textrm{(ind.)} - 20 \,\textrm{kVAr (kap.)}| = 7.501 \,\textrm{kVAr (kap.)}
+\end{align*}
+
+Därefter kan vi räkna ut $S_{tot}$.
+
+\begin{align*}
+S_{tot} &= \sqrt{P_{tot}^{2} + Q_{tot}^{2}}\\
+S_{tot} &= \sqrt{20.5^{2} + 7.501^{2}}\\
+S_{tot} &\approx 21.829 \,\textrm{kVA}\\
+\end{align*}
+
+Med hjälp av detta kan vi räkna ut cos \phi för anläggningen. Från trigonometrin
+kanske man vet att $cos \phi = narliggande / hypotenusa$, vilket i det här
+fallet då är...
+
+\begin{align*}
+cos \phi &= \frac{P}{S}\\
+cos \phi &= \frac{20.5}{21.829}\\
+cos \phi &= 0.939 \,\textrm{(ind.)}\\
+\end{align*}
+
+Detta känns rimligt med tanke på hur uppgiften är formulerad. Att elektrikern "i
+sin iver [...] [installerade en] kondensator som var på tok för stor [, för] att
+kunna växa och slippa köpa till extra kondensator senare då man skall utvidga”.
+Då har PF-värdet inte ändrats mycket, men man gått från induktiv till kapacitiv
+
+*Svar*: $P_{tot} = 20 \,\textrm{kW}$, $S_{tot} = 6 \,\textrm{kVA}$, $Q_{tot} = 7
+\,\textrm{kVAr (kap.)}$ och $cos \phi = 0.939 (kap)$.
+\newpage
+
+*** Deluppgift 2
+b) /Företaget skall utvidga och man köper in 3 st nya elmotorer på vardera 10 kW/
+   /med cos \phi = 0,8 (ind.). Efter inkopplingen skall totala effektfaktorn vara/
+   /minst 0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller/
+   /högre. Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande/
+   /kondensator (utöver tidigare kondensator/kondensatorer) och hur stor skall i/
+   /så fall denna nya (extra kondensator) i så fall vara mätt i [kVAr]?/
+
+Innan uppgraderingen vet vi följande:
+
+\begin{align*}
+P_{tot} &= 20 \,\textrm{kW} \\
+S_{tot} &= 6 \,\textrm{kVA} \\
+Q_{tot} &= 7 \,\textrm{kVAr (kap.)} \\
+cos \phi &= 0.939 \,\textrm{(ind.)}\\
+\end{align*}
+
+Tre nya elmotorer på 10 kW vardera med cos \phi 0.8 (ind) ska installeras. Jag
+kommer räkna dessa som en motor för enkelhetens skull och kalla denna $elm$.
+
+\begin{align*}
+P_{elm} &= 30 \,\textrm{kW}\\
+cos \phi &= 0.8 \,\textrm{(ind.)}\\
+\end{align*}
+
+Då kan vi räkna ut dess reaktiva effekt
+
+\begin{align*}
+Q &= P * tan \phi\\
+Q_{elm} &= 30 kW * tan(cos^{-1}(0.8))\\
+Q_{elm} &= 22.5 \,\textrm{kVAr (ind.)}
+\end{align*}
+
+*Rimlighetstest*
+\begin{align*}
+\frac{P}{\sqrt{P^2 + Q^2}} &= cos \phi\\
+\frac{30}{\sqrt{30^{2} + 22.5^{2}}} &= 0.8
+\end{align*}
+Q är korrekt.
+
+Då drar vi av $Q_{elm}$ från den tidigare $Q_{tot}$, vilket jag kallar
+$Q_{gammal}$ för att få ut den nya $Q_{tot}$. Jag subtraherar då $Q_{elm}$ är
+induktiv och $Q_{gammal}$ är kapacitiv I mer visuella ord så pekar $Q_{gammal}$
+"nedåt" och $Q_{elm}$ pekar "uppåt" (se senaste bilden).
+
+\begin{align*}
+Q_{gammal} - Q_{elm} &= Q_{tot}\\
+|7 \,\textrm{kVAr (kap.)} - 22.5 \,\textrm{kVAr (ind.)}| &= 15.5 \,\textrm{kVAr (ind.)}
+\end{align*}
+
+Sedan är det bara att lägga på de 30 kW som elmotorerna drar på den tidigare
+totalen $P_{gammal}$
+
+\begin{align*}
+P_{tot} &= P_{elm} + P_{gammal}\\
+P_{tot} &= 30 \,\textrm{kW} + 20 \,\textrm{kW} \\
+P_{tot} &= 50 \,\textrm{kW} \\
+\end{align*}
+
+Vi kan därmed räkna ut den nya cos \phi.
+
+\begin{align*}
+\frac{P}{\sqrt{P^2 + Q^2}} &= cos \phi \\
+\frac{50}{\sqrt{50^2 + 15.5^2}} &= 0.955 (ind)
+\end{align*}
+
+Vilket känns rimligt, då vi hade ett rätt stort "underskott" (tänkt i
+visardiagram) och till tre väldigt induktiva elmotorer. Resultatet är även $0
+\leq cos \phi \leq 1$, inte nog med det utan även $0.95 \leq cos \phi \leq 1.0$.
+Så ingen ny kondensator behövs.
+
+*Rimlighetstest*: För att räkna ut ett "målvärde" (egentligen maxvärde) på Q så kan vi använda oss
+utav...
+
+\begin{align*}
+tan v &= \frac{motstaende}{narliggnade}\\
+tan v &= \frac{Q}{P}\\
+Q &= tan v * P\\
+\\
+Q &= tan(cos^{-1}(0.95)) * 50 \,\textrm{kW}\\
+Q &\approx 16.434 \,\textrm{kVAr}
+\end{align*}
+
+Nuvarande $Q_{tot} = 15.5$ vilket är mindre än $16.434$, svaret att ingen ny
+kondensator behövs är då rimligt. Det finns ju rum för fel pga avrundning och
+lågt antal värdesiffror, men jag känner mig bekväm med svaret.
+
+*Svar*: Ingen ny kondensator behövs.
+
+*** Deluppgift 3
+ c) /En tid senare köper företaget in ytterligare 3 st nya elmotorer av samma/
+    /sort som i uppgift b). Efter inkopplingen skall totala effektfaktorn vara/
+    /minst 0,95 (ind). OBS! Detta skall inte tolkas som 0,96 utan som 0,95 eller/
+    /högre. Beräkna den nya effektfaktorn. Behövs ytterligare faskompenserande/
+    /kondensator (utöver tidigare kondensator/kondensatorer) och hur stor skall i/
+    /så fall denna nya (extra kondensator) i så fall vara mätt i [kVAr]?/
+
+Vi vet att innan uppgraderingen så var värdena
+
+\begin{align*}
+P_{tot} &= 50 \,\textrm{kW} \\
+Q_{tot} &= 15.5 \,\textrm{kVAr (ind.)} \\
+cos \phi &= 0.955 \,\textrm{(ind.)} \\
+\end{align*}
+
+Vi vet även följande från tidigare uppgift, då det är samma sorts motorer.
+
+\begin{align*}
+P_{elm} &= 30 \,\textrm{kW} \\
+Q_{elm} &= 22.5 \,\textrm{kVAr (ind.)} \\
+cos \phi &= 0.8 \,\textrm{(ind.)} \\
+\end{align*}
+
+Så vi börjar att lägga ihop vektorerna P och Q.
+
+\begin{align*}
+P_{tot} &= P_{gammal} + P_{elm} \\
+P_{tot} &= 50 \,\textrm{kW} + 30 \,\textrm{kW} = 80 \,\textrm{kW} \\
+P_{tot} &= 80 \,\textrm{kW} \\
+\\
+Q_{tot} &= Q_{gammal} + Q_{elm} \\
+Q_{tot} &= 15.5 \,\textrm{kVAr (ind.)} + 22.5 \,\textrm{kVAr (ind.)} \\
+Q_{tot} &= 38 \,\textrm{kVAr (ind.)}
+\end{align*}
+
+Då får vi en PF på...
+
+\begin{align*}
+\frac{P}{\sqrt{P^2 + Q^2}} &= cos \phi \\
+\frac{80}{\sqrt{80^{2} + 38^{2}}} &= 0.90 \,\textrm{(ind.)} \\
+cos \phi &= 0.90 \\
+\end{align*}
+
+Så en till kondensator kommer att behövas. För att räkna ut ett målvärde på Q
+kan vi använda oss av formeln nedan.
+
+\begin{align*}
+tan \phi &= \frac{motstaende}{narliggnade} \\
+tan \phi &= \frac{Q}{P} \\
+Q &= tan \phi * P \\
+Q_{max} &= tan(cos^{-1}(0.95)) * P \\
+\end{align*}
+
+Vi sätter in de värden vi vet
+
+\begin{align*}
+Q_{max} &= tan(cos^{-1}(0.95)) * 80 = 26.294 \,\textrm{kVAr}
+\end{align*}
+
+Vi avrundar det nedåt till 26 kVAr för att vara lite på den säkra sidan.
+Maxvärdet Q får ha är då 26 kVAr och är nu 38 kVAr. Så en kondensator på $38 -
+26 = 12 \,\textrm{kVAr}$ behövs.
+
+*Svar*: En kondensator på 12 kVAr behövs.
+\newpage
+
+*** Deluppgift 4
+ d) /Egenkontroll (som skall redovisas): Summera nu ihop P och Q för alla/
+    /komponenter som nu finns efter uppgift c), dvs lysrör, elmotorer, resistiva/
+    /elapparater, original faskompenserande kondensator, 3 st nya Elmotorer,/
+    /eventuell extra faskompenserande kondensator, ytterligare 3 st nya Elmotorer/
+    /samt eventuell ytterligare extra faskompenserande kondensator./
+
+Följande finns:
+- Lysrör på totalt 5.0 kW med cos \phi = 0,707107 (ind)
+- Elmotorer på totalt 10 kW med cos \phi = 0,80 (ind)
+- Vanliga resistiva elapparater (tex glödlampor, värmeelement, etc) på totalt
+  5,5 kW (med cos \phi = 1,0)
+- En faskompenserande kondensator på totalt 20 kVAr
+
+Sedan uppgraderades anläggningen med tre nya elmotorer på 10 kW vardera, cos
+\phi = 0.8 (ind). Jag räknade ut att ingen ny kondensator behövdes.
+
+Därefter uppgraderades anläggningen igen med ytterligare 3 nya elmotorer på 10
+kW vardera, cos \phi = 0.8 (ind). Där räknade jag ut att en faskompenserande
+kondensator på 12 kVAr behövdes.
+
+\begin{align*}
+P_{tot} &= (((P_{lys} + P_{elmot} + P_{apparater}) + 3 * P_{ny motor}) +
+3 * P_{ny motor})\\
+P_{tot} &= (((5.0 + 10 + 5.5) + 3 * 10) + 3 * 10)\\
+P_{tot} &= 80.5 \,\textrm{kW} \\
+\end{align*}
+
+Därefter kan vi räkna ut Q_{tot}.
+
+\begin{align*}
+Q_{tot} &= (((Q_{lys} + Q_{elmot} + Q_{apparater})
++ 3 * Q_{ny motor}) + 3 * Q_{ny motor})
+\end{align*}
+
+Men vi vet inte Q för någon av komponenterna, utan måste räkna ut det.
+
+Vi vet inte \phi utan bara cos \phi, så vi får räkna
+$tan \phi = tan(cos^{-1}(cos \phi))$
+
+\begin{align*}
+Q &= P * tan(cos^{-1}(cos \phi))\\
+\\
+Q_{lys} &= 5.0 \,\textrm{kW} * tan(cos^{-1}(0.0707107)) \\
+Q_{lys} &\approx 4.999 \,\textrm{kVAr (ind.)} \\
+\\
+Q_{elmot} &= 10 \,\textrm{kW} * tan(cos^{-1}(0.8)) \\
+Q_{elmot} &= 7.5 \,\textrm{kVAr (ind.)} \\
+\\
+Q_{elapp} &= 5.5 * tan(cos^{-1}(1.0)) \\
+Q_{elapp} &= 0 \\
+\\
+Q_{nymotor} &= 10 \,\textrm{kW} * tan(cos^{-1}(0.8)) \\
+Q_{nymotor} &= 7.5 \,\textrm{kVAr (ind.)} \\
+\end{align*}
+
+Vi har då Q för alla induktiva komponenter. Vi slår ihop dem och får då
+
+\begin{align*}
+Q_{okompenserad} &= 4.999 + 7.5 + 0 + (6 * 7.5) \,\textrm{kVAr (ind.)}\\
+Q_{okompenserad} &= 57.499 \,\textrm{kVAr (ind.)}
+\end{align*}
+
+Men vi har även två faskompenserande induktorer på 20 kVAr och 12 kVAr, totalt
+32 kVAr. Vi drar av det från Q_{okompenserad}
+
+\begin{align*}
+Q_{tot} &= Q_{okompenserad} - 32 \,\textrm{kVAr}\\
+Q_{tot} &= 25.499 \,\textrm{kVAr (ind.)}
+\end{align*}
+
+Vi räknar då ut cos \phi genom formeln nedan
+
+\begin{align*}
+\frac{P}{\sqrt{P^{2} + Q^{2}}} &= cos \phi \\
+\frac{80.5}{80.5^{2} + 25.499^{2}} &\approx 0.9533
+\end{align*}
+
+Vilket är något över 0.95, vilket var målet. Det är även ungefär vad jag hade
+förväntat mig från resultatet i deluppgift 3. Då räknade jag ut vad minsta
+kravet på en faskompenserande kondensator behöver för värde, men avrundade
+lite för att vara på den "lite mer säkra sidan" så att säga.
