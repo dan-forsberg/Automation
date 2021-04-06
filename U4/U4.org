@@ -114,15 +114,15 @@ vänster från binära talet (1) först i gray-koden => 1 + 011110 = 1011110
 *** Lodrätt 9
 0010111_{2} i 2-komp
 
-Börja med att invertera siffrorna
+#+BEGIN_SRC
 0010111
 1101000
 
-Addera 1
+Lägg på 1
 1101001
+#+END_SRC
 
 *Svar*: 1101001
-
 ** Vågrätt
 *** Vågrätt 1
 0010 0001 0001_{BCD} -> Decimalt
@@ -224,10 +224,71 @@ Vilket jag redan hade fått ifyllt, bra!
 *Svar*: 1001 0110 10
 
 *** Vågrätt 8
-0110_2 - 0011_2, använd 2 komplement
+7241_8 -> hex
 
-Gör om 0011 till 2 komplement: 1101
+Ledningen säger att man inte ska gå via decimalt, vilket jag håller med om.
+Däremot känns det enkelt att gå via binärt, då 7 => 111 och F => 1111. Så jag
+börjar med att konvertera 7, 2, 4, 1 till binärt, därifrån till hex.
 
-Lägg ihop dom sen
+#+BEGIN_SRC
+Okt => Bin
+7   => 111
+2   => 010
+4   => 100
+1   => 001
+#+END_SRC
 
-blaha
+Så det är 111010100001 binärt. Gruppera om det i par om fyra, konvertera till
+hex.
+
+#+BEGIN_SRC
+Bin  => Hex
+1110 => E
+1010 => A
+0001 =) 1
+#+END_SRC
+
+Svar: (0)EA1.
+
+*** Vågrätt 9
+0110_2 - 0011_2, använd tvåkomplement
+
+Gör om 0011 till tvåkomplement: invertera 0 => 1, 1 => 0 och lägg på en etta.
+Addera ihop talen istället för att subtrahera.
+
+#+BEGIN_SRC
+0011 ==[tvåkomplement]==> 1101
+
+  1
+  0110
++ 1101
+------
+ 10011
+ ^
+ Resultatet är positivt
+#+END_SRC
+
+*Svar*: 0011
+
+Jag får det inte att passa in med lodrätt 9. Jag har dubbelkolllat svaren på
+båda frågor och det ska stämmas. Jag dubbelkollade lodrätt 9 mot en räknare och
+får samma svar.
+
+Gör jag om 0110_2 till tvåkomplement så får jag också ut 0011_2 (fast negativ).
+
+*** Vågrätt 10
+00010_2 - 01001_2, använd tvåkomplement
+
+#+BEGIN_SRC
+01001 ==[tvåkomplement]==> 10111
+
+   11
+  00010
++ 10111
+-------
+ 011001
+ ^
+ Resultatet är negativt
+#+END_SRC
+
+*Svar*: 11001_2
