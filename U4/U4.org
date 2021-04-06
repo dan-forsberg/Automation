@@ -1,34 +1,46 @@
+#+OPTIONS: num:nil toc:nil
+#+LATEX: \setlength\parindent{0pt}
+#+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+AUTHOR: Dan Forsberg
+
 * Lösning
 ** Lodrätt
 *** Lodrätt 1
-(10 1110 0011)_2 -> BCD-kod
+*(10 1110 0011)_2 -> BCD-kod*
 
 Gör om till decimalt
-1011100011 = 739 dec ("fuskade" och använde en räknare här)
+| 512 | 256 | 128 | 64 | 32 | 16 | 8 | 4 | 2 | 1 |
+|   1 |   0 |   1 |  1 |  1 |  0 | 0 | 0 | 1 | 1 |
+
+512+128+64+32+2+1 = 739_{10}
+
+
 Vi ska då representera 7, 3 och 9 binärt
 
+#+BEGIN_SRC
 7 = (8*0) + (4*1) + (2*1) + (1*1) = 0111
 3 = (8*0) + (4*0) + (2*1) + (1*1) = 0011
 9 = (8*1) + (4*0) + (2*0) + (1*1) = 1001
+#+END_SRC
 
 *Svar*: 0111 0011 1001
 
 *** Lodrätt 2
-(11 1100 0111)_2 -> oktalt
+*(11 1100 0111)_2 -> oktalt*
 
-Börja med att gruppera om siffror till 3 och 3
-001 111 000 111
+Börja med att gruppera om siffror till 3 och 3:\\
+=001 111 000 111=
 
-Sätt "421" under varje grupp och addera talsumman
+Sätt "421" under varje grupp, addera siffrorna under för varje etta ovanför
 
 | 001 | 111 | 000 | 111 |
 | 421 | 421 | 421 | 421 |
 |-----+-----+-----+-----|
-|   1 |   7 |   0 | 7   |
+|   1 |   7 |   0 |   7 |
 
-*Svar*: (11 1100 0111)_2 => (1707)_8
+*Svar*: (11 1100 0111)_2 => 1707_8
 *** Lodrätt 3
-(1111 0000 0000 1110)_2 -> Hexadecimalt
+*(1111 0000 0000 1110)_2 -> Hexadecimalt*
 
 Ungefär samma tillvägagångssätt som ovan, men gruppera om fyra
 
@@ -36,102 +48,112 @@ Ungefär samma tillvägagångssätt som ovan, men gruppera om fyra
 | 8421 | 8421 | 8421 | 8421 |
 |------+------+------+------|
 |    F |    0 |    0 | E    |
-*Svar* (1111 0000 0000 1110)_2 => (F00E)_{16}
+*Svar* (1111 0000 0000 1110)_2 => F00E_{16}
 
 *** Lodrätt 4
-ASCII(55_{10}), dvs ASCII-tecknet för talet 55_{10}
-Det går att utläsa från valfri ASCII-tabell att 55_{10} => 7
-*** Lodrätt 5
-119_{10} -> Okt
+*ASCII(55_{10}), dvs ASCII-tecknet för talet 55_{10}*
 
+Det går att utläsa från valfri ASCII-tabell att 55_{10} => "7"
+
+*** Lodrätt 5
+*119_{10} -> Okt*
+
+#+BEGIN_SRC
 119 / 8 = 14 + *7*
 14  / 8 = 1  + *6*
 1   / 8 = 0  + *1*
+#+END_SRC
 
 *Svar: 119_{10} => 167_{8}
 
 *** Lodrätt 6
-732_{8} -> binärt
+*732_{8} -> binärt*
+
 Ta en siffra i taget, vänster till höger, och representera den binärt med tre
 siffror. "Sätt ihop" resultaten.
 
+#+BEGIN_SRC
 7 => 111
 3 => 011
 2 => 010
+#+END_SRC
 
-*Svar: 111 011 010
+Svar: 111 011 010
 
 *** Lodrätt 7
-(267B)_{16} -> decimalt
+*267B_{16} -> decimalt*
 
 Ställ upp en tabell på vad varje sifferposition är värd
 
-| 16^3 | 16^2 | 16^1 |   16^0 |
-| 4096 |  256 |   16 |      1 |
-|------+------+------+--------|
-|    2 |    6 |    7 | 11 (b) |
+| 16^3 | 16^2 | 16^1 |     16^0 |
+| 4096 |  256 |   16 |        1 |
+|------+------+------+----------|
+|    2 |    6 |    7 | B (= 11) |
 
 (2*4096) + (6*256) + (7*16) + (11*1) = 9851
 
-*Svar*: (267B)_{16} => (9851)_10
-
+*Svar*: 267B_{16} => 9851_10
+\newpage
 *** Lodrätt 8
-1101011_2 -> Graykod
+*1101011_2 -> Graykod*
 
-Vi kan ta två siffror i taget, höger från vänster, och XOR:a dem
+Vi kan ta två siffror i taget, höger från vänster, och XOR:a dem. Men sätt en noll i början
 
 #+BEGIN_SRC
-1101011
+01101011
+      ^^
+1 XOR 1 = 0
+
+01101011
      ^^
-1 XOR 1 = 0
+0 XOR 1 = 1
 
-1101011
+01101011
     ^^
-0 XOR 1 = 1
+1 XOR 0 = 1
 
-1101011
+01101011
    ^^
-1 XOR 0 = 1
-
-1101011
-  ^^
 0 XOR 1 = 1
 
-1101011
- ^^
+01101011
+  ^^
 1 XOR 0 = 1
 
-1101011
-^^
+01101011
+ ^^
 1 XOR 1 = 0
+
+01101011
+^^
+0 XOR 1 = 1
 #+END_SRC
 
-Sedan läser man nedifrån och upp => 011110, men lägger siffran längst till
-vänster från binära talet (1) först i gray-koden => 1 + 011110 = 1011110
+Sedan läser man nedifrån och upp => 1011110
 
 *Svar*: 1011110
 
 *** Lodrätt 9
-0010111_{2} i 2-komp
+*0010111_{2} i 2-komp*
 
 #+BEGIN_SRC
+Invertera 0 => 1, 1 => 0
 0010111
 1101000
 
-Lägg på 1
+Addera 1
 1101001
 #+END_SRC
 
 *Svar*: 1101001
 ** Vågrätt
 *** Vågrätt 1
-0010 0001 0001_{BCD} -> Decimalt
+*(0010 0001 0001)_{BCD} -> Decimalt*
 
-Ta varje grupp för sig, $0010$ kan jag snabbt avgöra är 2, $0001$ = 1, $0001$ =
-1. Så svaret är då (211)_{10}
+Ta varje grupp för sig, $0010$ kan jag snabbt avgöra är 2, $0001$ = 1. Så svaret är då (211)_{10}
 
 *** Vågrätt 2
-(261)_{8} -> decimalt
+*261_{8} -> decimalt*
 
 | 8^2 | 8^1 | 8^0 |
 |  64 |   8 |   1 |
@@ -140,15 +162,15 @@ Ta varje grupp för sig, $0010$ kan jag snabbt avgöra är 2, $0001$ = 1, $0001$
 
 (2*64) + (6*8) + (1*1) = 177
 
-*Svar*: 177 dec, vilket vi redan har fått från Lodrätt 1, 2 och 4. Bra!
+*Svar*: 177_{10}, vilket vi redan har fått från Lodrätt 1, 2 och 4. Bra!
 
 *** Vågrätt 3
-13E_{16} -> binärt
+*13E_{16} -> binärt*
 
 Jag tänker lite som med BCD-koden, representera 1, 3 och E (14) binärt,
 grupperat om 4 siffror.
 
-1 => 0001
+1 => 0001\\
 3 => 0011
 
 Att räkna ut E (14) är ju däremot något jobbigare. Men vi börjar med att
@@ -165,28 +187,30 @@ och vi har inget överskott.
 
 E => 1110
 
-*Svar*: 0001 0011 1110 (alt 100 111 110)
+*Svar*: (0001 0011 1110)_{2} (alt. (100 111 110)_{2}).
 
 *** Vågrätt 4
-Talet (decimalt) som get "k" (inte "K") som ASCII-tabell
+*Talet (decimalt) som get "k" (inte "K") som ASCII-tabell*
 
 Det är bara att kika på valfri ASCII-tabell.
 
 *Svar*: 107
 
 *** Vågrätt 5
-(8033)_{10} -> hexadecimalt
+*8033_{10} -> hexadecimalt*
 
+#+BEGIN_SRC
 8033 / 16 = 502 + 1
-502 / 16 = 31 + 6
-31 / 16 = 1 + F
-1 / 16 = 0 + 1
+502  / 16 = 31  + 6
+31   / 16 = 1   + F
+1    / 16 = 0   + 1
+#+END_SRC
 
 *Svar*: 1F61
 Vilket jag redan hade fått ifyllt, bra!
 
 *** Vågrätt 6
-11CD_{16} -> okt
+*11CD_{16} -> okt*
 
 Konvertera =1 1 C D= till binärt
 
@@ -199,8 +223,11 @@ D => 1101
 #+END_SRC
 
 Gruppera om i 3 och 3 och konvertera
-=1 000 111 001 101=
-=1   0   7   1   5=
+
+#+BEGIN_SRC
+1 000 111 001 101
+1   0   7   1   5
+#+END_SRC
 
 *Svar*: 10715
 Vilket jag redan hade fått ifyllt, bra!
@@ -224,7 +251,7 @@ Vilket jag redan hade fått ifyllt, bra!
 *Svar*: 1001 0110 10
 
 *** Vågrätt 8
-7241_8 -> hex
+*7241_8 -> hex*
 
 Ledningen säger att man inte ska gå via decimalt, vilket jag håller med om.
 Däremot känns det enkelt att gå via binärt, då 7 => 111 och F => 1111. Så jag
@@ -245,13 +272,13 @@ hex.
 Bin  => Hex
 1110 => E
 1010 => A
-0001 =) 1
+0001 => 1
 #+END_SRC
 
 Svar: (0)EA1.
 
 *** Vågrätt 9
-0110_2 - 0011_2, använd tvåkomplement
+*0110_2 - 0011_2, använd tvåkomplement*
 
 Gör om 0011 till tvåkomplement: invertera 0 => 1, 1 => 0 och lägg på en etta.
 Addera ihop talen istället för att subtrahera.
@@ -270,14 +297,15 @@ Addera ihop talen istället för att subtrahera.
 
 *Svar*: 0011
 
-Jag får det inte att passa in med lodrätt 9. Jag har dubbelkolllat svaren på
-båda frågor och det ska stämmas. Jag dubbelkollade lodrätt 9 mot en räknare och
-får samma svar.
+Jag får det inte att passa in med lodrätt 9. Jag har dubbelkollat svaren på båda
+frågor och det ska stämmas. Jag dubbelkollade lodrätt 9 mot en räknare och får
+samma svar. Även om jag gör om denna fråga till decimalt 0110_{2} => 6_{10}, 0011_{2} =>
+3_{10} och subtraherar: 6 - 3 = 3 så får jag samma svar som ovan.
 
 Gör jag om 0110_2 till tvåkomplement så får jag också ut 0011_2 (fast negativ).
 
 *** Vågrätt 10
-00010_2 - 01001_2, använd tvåkomplement
+*00010_2 - 01001_2, använd tvåkomplement*
 
 #+BEGIN_SRC
 01001 ==[tvåkomplement]==> 10111
