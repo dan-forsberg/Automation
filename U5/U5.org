@@ -1,0 +1,25 @@
+#+OPTIONS: num:nil toc:nil
+#+LATEX: \setlength\parindent{0pt}
+#+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+AUTHOR: Dan Forsberg
+
+* Uppgift 5 - Grindar
+
+
+** Deluppgift A
+/a) Förenkla kretsen med hjälp av boolesk algebra och rita den nya minimala
+kretsen/
+
+Min första tanke var att först och främst "kasta om" grindarna lite så att
+$(\overline{A}\overline{B}\overline{C})$ är bredvid $(ABC)$. Men efter att ha
+jag hade snöat in mig på det så testade jag att skriva upp grindarna algebraiskt
+precis som det står i grindnätet. Då kunde jag se att man kan kasta om
+variablerna lite och se ett tydligt mönster.
+
+Nätet innan omkastning
+
+\begin{gather*}
+(\overline{A} * \overline{B} * \overline{C}) + (\overline{A} * B * \overline{C}) +\\
+(A * \overline{C} * \overline{D}) + (A * \overline{C} * D) +\\
+(A * B * C) + (A * \overline{B} * C)
+\end{gather*}
