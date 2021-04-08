@@ -92,14 +92,55 @@ positivt.
 
 [[./slutgiltig.png]]
 
-
 ** Deluppgift B
 /b) Bygg den nya kretsen med NAND-grindar. *Rita den nya kretsen.*/
 
+För att invertera en signal med NAND så kan vi helt enkelt koppla $X$ till båda
+insignalerna på en NAND-grind. Då får vi sanningstabellen nedan.
 
+| X | 'X'X |
+|---+------|
+| 0 |    1 |
+| 1 |    0 |
+|---+------|
+
+Det vill säga, signalen inverteras.
+
+Vi kan göra en ELLER-grind med hjälp av tre NAND-grindar, genom att invertera
+$A$ och $B$ sedan koppla dem till den sista NAND-grinden. Vi får då
+sanningstabellen nedan:
+
+| A | B | 'A | 'B | 'A'B |
+|---+---+----+----+------|
+| 0 | 0 |  1 |  1 |    0 |
+| 0 | 1 |  1 |  0 |    1 |
+| 1 | 0 |  0 |  1 |    1 |
+| 1 | 1 |  0 |  0 |    1 |
+|---+---+----+----+------|
+
+Vi vet då hur vi ska invertera signaler och hur vi bygger en ELLER-grind med
+NAND-grindar.
+
+Om vi analyserar $A+\overline{C}$ ser vi att C behöver inverteras och skickas in
+en ELLER-grind, A behöver inte inverteras utan ska gå direkt till en ELLER-grind.
+Skulle vi applicera det på det vi vet från ovan skulle vi få följande:
+
+\begin{gather*}
+\overline{(\overline{A}*\overline{\overline{C}})}
+\end{gather*}
+
+Vilket är samma som:
+
+\begin{gather*}
+\overline{(\overline{A}*C)}
+\end{gather*}
+
+För att summera, vi behöver två NAND-grindar, en för att inverta $A$ och för
+signalerna $\overline{A} * B$. Vilket blir resultatet nedan.
+
+[[./slutgiltig.png]]
 
 ** Deluppgift C
-
 /c) Rita en sanningstabell till ursprungskretsen/
 
 |---+---+---+---+--------+-------+-------+------+-----+------+---|
@@ -153,3 +194,89 @@ krets/
 | 1 | 1 | 1 | 0 | F      | F     | F     | F    | T   | F    | T    | T |
 | 1 | 1 | 1 | 1 | F      | F     | F     | F    | T   | F    | T    | T |
 |---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+
+** Deluppgift F
+/f) *Egenkontroll:* Kontrollera att resultatet i c), d) och e) är samma. Om inte
+check och rätta slarvfel./
+
+Ifall vi tar sanningstabellen för den ursprungliga kretsen (jag har tagit bort
+resultatet från de alla grindarna för att hålla ner bredden).
+
+|---+---+---+---+---|
+| A | B | C | D | U |
+|---+---+---+---+---|
+| 0 | 0 | 0 | 0 | T |
+| 0 | 0 | 0 | 1 | T |
+| 0 | 0 | 1 | 0 | F |
+| 0 | 0 | 1 | 1 | F |
+|---+---+---+---+---|
+| 0 | 1 | 0 | 0 | T |
+| 0 | 1 | 0 | 1 | T |
+| 0 | 1 | 1 | 0 | F |
+| 0 | 1 | 1 | 1 | F |
+|---+---+---+---+---|
+| 1 | 0 | 0 | 0 | T |
+| 1 | 0 | 0 | 1 | T |
+| 1 | 0 | 1 | 0 | T |
+| 1 | 0 | 1 | 1 | T |
+|---+---+---+---+---|
+| 1 | 1 | 0 | 0 | T |
+| 1 | 1 | 0 | 1 | T |
+| 1 | 1 | 1 | 0 | T |
+| 1 | 1 | 1 | 1 | T |
+|---+---+---+---+---|
+
+Och jämför den med sanningstabellen för min förenklade krets så ser vi att det
+är samma resultat.
+
+|---+---+---+---+------|
+| A | B | C | D | A+'C |
+|---+---+---+---+------|
+| 0 | 0 | 0 | 0 | T    |
+| 0 | 0 | 0 | 1 | T    |
+| 0 | 0 | 1 | 0 | F    |
+| 0 | 0 | 1 | 1 | F    |
+|---+---+---+---+------|
+| 0 | 1 | 0 | 0 | T    |
+| 0 | 1 | 0 | 1 | T    |
+| 0 | 1 | 1 | 0 | F    |
+| 0 | 1 | 1 | 1 | F    |
+|---+---+---+---+------|
+| 1 | 0 | 0 | 0 | T    |
+| 1 | 0 | 0 | 1 | T    |
+| 1 | 0 | 1 | 0 | T    |
+| 1 | 0 | 1 | 1 | T    |
+|---+---+---+---+------|
+| 1 | 1 | 0 | 0 | T    |
+| 1 | 1 | 0 | 1 | T    |
+| 1 | 1 | 1 | 0 | T    |
+| 1 | 1 | 1 | 1 | T    |
+|---+---+---+---+------|
+
+Jämför vi dessa med den nya NAND-kretsen får vi även samma resultat.
+
+|---+---+---+---+-------------|
+| A | B | C | D | '(A*'(C*C)) |
+|---+---+---+---+-------------|
+| 0 | 0 | 0 | 0 | T           |
+| 0 | 0 | 0 | 1 | T           |
+| 0 | 0 | 1 | 0 | F           |
+| 0 | 0 | 1 | 1 | F           |
+|---+---+---+---+-------------|
+| 0 | 1 | 0 | 0 | T           |
+| 0 | 1 | 0 | 1 | T           |
+| 0 | 1 | 1 | 0 | F           |
+| 0 | 1 | 1 | 1 | F           |
+|---+---+---+---+-------------|
+| 1 | 0 | 0 | 0 | T           |
+| 1 | 0 | 0 | 1 | T           |
+| 1 | 0 | 1 | 0 | T           |
+| 1 | 0 | 1 | 1 | T           |
+|---+---+---+---+-------------|
+| 1 | 1 | 0 | 0 | T           |
+| 1 | 1 | 0 | 1 | T           |
+| 1 | 1 | 1 | 0 | T           |
+| 1 | 1 | 1 | 1 | T           |
+|---+---+---+---+-------------|
+
+Så allting stämmer.
