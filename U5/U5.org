@@ -9,6 +9,7 @@ utsignal U./
 
 [[./ursprung.png]]
 
+
 ** Deluppgift A
 /a) Förenkla kretsen med hjälp av boolesk algebra och rita den nya minimala
 kretsen/
@@ -75,7 +76,8 @@ Kasta om $A$ och $C$.
 (A * C)
 \end{gather*}
 
-Då kan vi applicera distributionslagen igen.
+Då kan vi applicera distributionslagen igen, då A inte har någon effekt på de
+första två grinderna.
 
 \begin{gather*}
 \overline{C} + (A * C)
@@ -89,6 +91,10 @@ positivt.
 \end{gather*}
 
 *Svar*
+
+\begin{gather*}
+\overline{C} + A
+\end{gather*}
 
 [[./slutgiltig.png]]
 
@@ -104,39 +110,16 @@ insignalerna på en NAND-grind. Då får vi sanningstabellen nedan.
 | 1 |    0 |
 |---+------|
 
-Det vill säga, signalen inverteras.
-
-Vi kan göra en ELLER-grind med hjälp av tre NAND-grindar, genom att invertera
-$A$ och $B$ sedan koppla dem till den sista NAND-grinden. Vi får då
-sanningstabellen nedan:
-
-| A | B | 'A | 'B | 'A'B |
-|---+---+----+----+------|
-| 0 | 0 |  1 |  1 |    0 |
-| 0 | 1 |  1 |  0 |    1 |
-| 1 | 0 |  0 |  1 |    1 |
-| 1 | 1 |  0 |  0 |    1 |
-|---+---+----+----+------|
-
-Vi vet då hur vi ska invertera signaler och hur vi bygger en ELLER-grind med
-NAND-grindar.
-
-Om vi analyserar $A+\overline{C}$ ser vi att C behöver inverteras och skickas in
-en ELLER-grind, A behöver inte inverteras utan ska gå direkt till en ELLER-grind.
-Skulle vi applicera det på det vi vet från ovan skulle vi få följande:
+Om vi kollar på DeMorgan's teorem $\neg(A \land B) = \neg A \lor \neg B$ så kan
+vi se att $A$ NAND $B = \neg A \lor \neg B$ vilket /nästan/ är $A \lor \neg B$ som vi är ute efter.
+Inverterar vi $A$ innan signalen går till NAND-grinden får vi då
+$\neg A$a NAND $B = A \lor \neg B$ vilket vi söker. Vi får då följande grindar.
 
 \begin{gather*}
-\overline{(\overline{A}*\overline{\overline{C}})}
+\overline{(\overline{A} \land C)}
 \end{gather*}
 
-Vilket är samma som:
-
-\begin{gather*}
-\overline{(\overline{A}*C)}
-\end{gather*}
-
-För att summera, vi behöver två NAND-grindar, en för att inverta $A$ och för
-signalerna $\overline{A} * B$. Vilket blir resultatet nedan.
+Vilket blir resultatet nedan.
 
 [[./slutgiltig.png]]
 
@@ -195,88 +178,37 @@ krets/
 | 1 | 1 | 1 | 1 | F      | F     | F     | F    | T   | F    | T    | T |
 |---+---+---+---+--------+-------+-------+------+-----+------+------+---|
 
+** Deluppgift E
+
+/e) Utöka sanningstabellen med ytterligare en kolumn för din nya förenklade
+krets på NAND-form./
+
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+| A | B | C | D | 'A'B'C | 'AB'C | A'C'D | A'CD | ACB | A'BC | A+'C | NAND-formen | U |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+| 0 | 0 | 0 | 0 | T      | F     | F     | F    | F   | F    | T    | T           | T |
+| 0 | 0 | 0 | 1 | T      | F     | F     | F    | F   | F    | T    | T           | T |
+| 0 | 0 | 1 | 0 | F      | F     | F     | F    | F   | F    | F    | F           | F |
+| 0 | 0 | 1 | 1 | F      | F     | F     | F    | F   | F    | F    | F           | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+| 0 | 1 | 0 | 0 | F      | T     | F     | F    | F   | F    | T    | T           | T |
+| 0 | 1 | 0 | 1 | F      | T     | F     | F    | F   | F    | T    | T           | T |
+| 0 | 1 | 1 | 0 | F      | F     | F     | F    | F   | F    | F    | F           | F |
+| 0 | 1 | 1 | 1 | F      | F     | F     | F    | F   | F    | F    | F           | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+| 1 | 0 | 0 | 0 | F      | F     | T     | F    | F   | F    | T    | T           | T |
+| 1 | 0 | 0 | 1 | F      | F     | F     | T    | F   | F    | T    | T           | T |
+| 1 | 0 | 1 | 0 | F      | F     | F     | F    | F   | T    | T    | T           | T |
+| 1 | 0 | 1 | 1 | F      | F     | F     | F    | F   | T    | T    | T           | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+| 1 | 1 | 0 | 0 | F      | F     | T     | F    | F   | F    | T    | T           | T |
+| 1 | 1 | 0 | 1 | F      | F     | F     | T    | F   | F    | T    | T           | T |
+| 1 | 1 | 1 | 0 | F      | F     | F     | F    | T   | F    | T    | T           | T |
+| 1 | 1 | 1 | 1 | F      | F     | F     | F    | T   | F    | T    | T           | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+-------------+---|
+
 ** Deluppgift F
 /f) *Egenkontroll:* Kontrollera att resultatet i c), d) och e) är samma. Om inte
 check och rätta slarvfel./
 
-Ifall vi tar sanningstabellen för den ursprungliga kretsen (jag har tagit bort
-resultatet från de alla grindarna för att hålla ner bredden).
-
-|---+---+---+---+---|
-| A | B | C | D | U |
-|---+---+---+---+---|
-| 0 | 0 | 0 | 0 | T |
-| 0 | 0 | 0 | 1 | T |
-| 0 | 0 | 1 | 0 | F |
-| 0 | 0 | 1 | 1 | F |
-|---+---+---+---+---|
-| 0 | 1 | 0 | 0 | T |
-| 0 | 1 | 0 | 1 | T |
-| 0 | 1 | 1 | 0 | F |
-| 0 | 1 | 1 | 1 | F |
-|---+---+---+---+---|
-| 1 | 0 | 0 | 0 | T |
-| 1 | 0 | 0 | 1 | T |
-| 1 | 0 | 1 | 0 | T |
-| 1 | 0 | 1 | 1 | T |
-|---+---+---+---+---|
-| 1 | 1 | 0 | 0 | T |
-| 1 | 1 | 0 | 1 | T |
-| 1 | 1 | 1 | 0 | T |
-| 1 | 1 | 1 | 1 | T |
-|---+---+---+---+---|
-
-Och jämför den med sanningstabellen för min förenklade krets så ser vi att det
-är samma resultat.
-
-|---+---+---+---+------|
-| A | B | C | D | A+'C |
-|---+---+---+---+------|
-| 0 | 0 | 0 | 0 | T    |
-| 0 | 0 | 0 | 1 | T    |
-| 0 | 0 | 1 | 0 | F    |
-| 0 | 0 | 1 | 1 | F    |
-|---+---+---+---+------|
-| 0 | 1 | 0 | 0 | T    |
-| 0 | 1 | 0 | 1 | T    |
-| 0 | 1 | 1 | 0 | F    |
-| 0 | 1 | 1 | 1 | F    |
-|---+---+---+---+------|
-| 1 | 0 | 0 | 0 | T    |
-| 1 | 0 | 0 | 1 | T    |
-| 1 | 0 | 1 | 0 | T    |
-| 1 | 0 | 1 | 1 | T    |
-|---+---+---+---+------|
-| 1 | 1 | 0 | 0 | T    |
-| 1 | 1 | 0 | 1 | T    |
-| 1 | 1 | 1 | 0 | T    |
-| 1 | 1 | 1 | 1 | T    |
-|---+---+---+---+------|
-
-Jämför vi dessa med den nya NAND-kretsen får vi även samma resultat.
-
-|---+---+---+---+-------------|
-| A | B | C | D | '(A*'(C*C)) |
-|---+---+---+---+-------------|
-| 0 | 0 | 0 | 0 | T           |
-| 0 | 0 | 0 | 1 | T           |
-| 0 | 0 | 1 | 0 | F           |
-| 0 | 0 | 1 | 1 | F           |
-|---+---+---+---+-------------|
-| 0 | 1 | 0 | 0 | T           |
-| 0 | 1 | 0 | 1 | T           |
-| 0 | 1 | 1 | 0 | F           |
-| 0 | 1 | 1 | 1 | F           |
-|---+---+---+---+-------------|
-| 1 | 0 | 0 | 0 | T           |
-| 1 | 0 | 0 | 1 | T           |
-| 1 | 0 | 1 | 0 | T           |
-| 1 | 0 | 1 | 1 | T           |
-|---+---+---+---+-------------|
-| 1 | 1 | 0 | 0 | T           |
-| 1 | 1 | 0 | 1 | T           |
-| 1 | 1 | 1 | 0 | T           |
-| 1 | 1 | 1 | 1 | T           |
-|---+---+---+---+-------------|
-
-Så allting stämmer.
+Resultaten är lika i C, D och E
