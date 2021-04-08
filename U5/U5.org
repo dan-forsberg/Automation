@@ -4,7 +4,10 @@
 #+AUTHOR: Dan Forsberg
 
 * Uppgift 5 - Grindar
+/I nedanstående kombinatoriska krets finnsfyra digitala insignaler A,B,C,D och en
+utsignal U./
 
+[[./ursprung.png]]
 
 ** Deluppgift A
 /a) Förenkla kretsen med hjälp av boolesk algebra och rita den nya minimala
@@ -12,9 +15,13 @@ kretsen/
 
 Min första tanke var att först och främst "kasta om" grindarna lite så att
 $(\overline{A}\overline{B}\overline{C})$ är bredvid $(ABC)$. Men efter att ha
-jag hade snöat in mig på det så testade jag att skriva upp grindarna algebraiskt
-precis som det står i grindnätet. Då kunde jag se att man kan kasta om
-variablerna lite och se ett tydligt mönster.
+jag hade snöat in mig på det utan att komma någonvart så testade jag att skriva
+upp grindarna algebraiskt precis som det står i grindnätet. Då kunde jag se att
+man kan kasta om variablerna lite och se ett tydligt mönster.
+
+Jag var även inne på att använda DeMorgan's lag, men efter ett tag förstod jag
+att givetvis $\overline{A*B*C} \neq \overline{A}*\overline{B}*\overline{C}$. Så
+DeMorgan's går inte att använda här.
 
 Nätet innan omkastning
 
@@ -23,3 +30,126 @@ Nätet innan omkastning
 (A * \overline{C} * \overline{D}) + (A * \overline{C} * D) +\\
 (A * B * C) + (A * \overline{B} * C)
 \end{gather*}
+
+Om vi kastar om $B * C$ på första och sista raden och sätter in lite
+förtydligande paranteser kan man se ett mönster. Här har jag även bytt plats på
+$\overline{B}$ och $B$ på sista raden:
+
+\begin{gather*}
+((\overline{A} * \overline{C}) * \overline{B}) + ((\overline{A} * \overline{C}) * B) +\\
+((A * \overline{C}) * \overline{D}) + ((A * \overline{C}) * D) +\\
+((A * C) * \overline{B}) + ((A * C) * B)
+\end{gather*}
+
+Om vi behandlar $(\overline{A} * \overline{C})$ som en variabel på första raden;
+$(A * \overline{C})$ som en variabel på andra raden; $(A * C)$ som en variabel
+på sista så kan vi se att vi kan vi i princip får följande:
+
+\begin{gather*}
+X*Y + X*\overline{Y} = X(Y + \overline{Y}) = X(1) = X
+\end{gather*}
+
+Det vill säga att $B$ inte har någon effekt på första raden; $D$ har ingen
+effekt på andra raden; $B$ har ingen effekt på sista raden. Så vi tar bort dem
+och får följande.
+
+\begin{gather*}
+(\overline{A} * \overline{C}) + (\overline{A} * \overline{C}) +\\
+(A * \overline{C}) + (A * \overline{C}) +\\
+(A * C) + (A * C)
+\end{gather*}
+
+Tar vi bort dubbletterna så får vi följande
+
+\begin{gather*}
+(\overline{A} * \overline{C}) +
+(A * \overline{C}) +
+(A * C)
+\end{gather*}
+
+Kasta om $A$ och $C$.
+
+\begin{gather*}
+(\overline{C} * \overline{A}) +
+(\overline{C} * A) +
+(A * C)
+\end{gather*}
+
+Då kan vi applicera distributionslagen igen.
+
+\begin{gather*}
+\overline{C} + (A * C)
+\end{gather*}
+
+Då kan vi förenkla $A*C$ till $A$, för om C inte är falsk så är det ju givetvis
+positivt.
+
+\begin{gather*}
+\overline{C} + A
+\end{gather*}
+
+*Svar*
+
+[[./slutgiltig.png]]
+
+
+** Deluppgift B
+/b) Bygg den nya kretsen med NAND-grindar. *Rita den nya kretsen.*/
+
+
+
+** Deluppgift C
+
+/c) Rita en sanningstabell till ursprungskretsen/
+
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+| A | B | C | D | 'A'B'C | 'AB'C | A'C'D | A'CD | ACB | A'BC | U |
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+| 0 | 0 | 0 | 0 | T      | F     | F     | F    | F   | F    | T |
+| 0 | 0 | 0 | 1 | T      | F     | F     | F    | F   | F    | T |
+| 0 | 0 | 1 | 0 | F      | F     | F     | F    | F   | F    | F |
+| 0 | 0 | 1 | 1 | F      | F     | F     | F    | F   | F    | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+| 0 | 1 | 0 | 0 | F      | T     | F     | F    | F   | F    | T |
+| 0 | 1 | 0 | 1 | F      | T     | F     | F    | F   | F    | T |
+| 0 | 1 | 1 | 0 | F      | F     | F     | F    | F   | F    | F |
+| 0 | 1 | 1 | 1 | F      | F     | F     | F    | F   | F    | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+| 1 | 0 | 0 | 0 | F      | F     | T     | F    | F   | F    | T |
+| 1 | 0 | 0 | 1 | F      | F     | F     | T    | F   | F    | T |
+| 1 | 0 | 1 | 0 | F      | F     | F     | F    | F   | T    | T |
+| 1 | 0 | 1 | 1 | F      | F     | F     | F    | F   | T    | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+| 1 | 1 | 0 | 0 | F      | F     | T     | F    | F   | F    | T |
+| 1 | 1 | 0 | 1 | F      | F     | F     | T    | F   | F    | T |
+| 1 | 1 | 1 | 0 | F      | F     | F     | F    | T   | F    | T |
+| 1 | 1 | 1 | 1 | F      | F     | F     | F    | T   | F    | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+---|
+
+** Deluppgift D
+/d) Utöka sanningstabellen med ytterligare en kolumn för din nya förenklade
+krets/
+
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+| A | B | C | D | 'A'B'C | 'AB'C | A'C'D | A'CD | ACB | A'BC | A+'C | U |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+| 0 | 0 | 0 | 0 | T      | F     | F     | F    | F   | F    | T    | T |
+| 0 | 0 | 0 | 1 | T      | F     | F     | F    | F   | F    | T    | T |
+| 0 | 0 | 1 | 0 | F      | F     | F     | F    | F   | F    | F    | F |
+| 0 | 0 | 1 | 1 | F      | F     | F     | F    | F   | F    | F    | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+| 0 | 1 | 0 | 0 | F      | T     | F     | F    | F   | F    | T    | T |
+| 0 | 1 | 0 | 1 | F      | T     | F     | F    | F   | F    | T    | T |
+| 0 | 1 | 1 | 0 | F      | F     | F     | F    | F   | F    | F    | F |
+| 0 | 1 | 1 | 1 | F      | F     | F     | F    | F   | F    | F    | F |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+| 1 | 0 | 0 | 0 | F      | F     | T     | F    | F   | F    | T    | T |
+| 1 | 0 | 0 | 1 | F      | F     | F     | T    | F   | F    | T    | T |
+| 1 | 0 | 1 | 0 | F      | F     | F     | F    | F   | T    | T    | T |
+| 1 | 0 | 1 | 1 | F      | F     | F     | F    | F   | T    | T    | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
+| 1 | 1 | 0 | 0 | F      | F     | T     | F    | F   | F    | T    | T |
+| 1 | 1 | 0 | 1 | F      | F     | F     | T    | F   | F    | T    | T |
+| 1 | 1 | 1 | 0 | F      | F     | F     | F    | T   | F    | T    | T |
+| 1 | 1 | 1 | 1 | F      | F     | F     | F    | T   | F    | T    | T |
+|---+---+---+---+--------+-------+-------+------+-----+------+------+---|
