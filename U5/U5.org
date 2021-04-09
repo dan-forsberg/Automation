@@ -15,39 +15,41 @@ utsignal U./
 kretsen/
 
 Min första tanke var att först och främst "kasta om" grindarna lite så att
-$(\overline{A}\overline{B}\overline{C})$ är bredvid $(ABC)$. Men efter att ha
+$(\neg A \land \neg B \land \neg C)$ är bredvid $(A \land B \land C)$. Men efter att ha
 jag hade snöat in mig på det utan att komma någonvart så testade jag att skriva
 upp grindarna algebraiskt precis som det står i grindnätet. Då kunde jag se att
 man kan kasta om variablerna lite och se ett tydligt mönster.
 
 Jag var även inne på att använda DeMorgan's lag, men efter ett tag förstod jag
-att givetvis $\overline{A*B*C} \neq \overline{A}*\overline{B}*\overline{C}$. Så
-DeMorgan's går inte att använda här.
+att givetvis $\neg(A \land B \land C) \neq (\neg A \land \neg B \land \neg C)$. Så
+DeMorgan's går inte att använda här. /Not: Framöver så kommer jag att skriva
+$\overline{A}$ istället för $\neg A$ för att det ska bli enklare att se vilken
+variabel som negeras och inte./
 
 Nätet innan omkastning
 
 \begin{gather*}
-(\overline{A} * \overline{B} * \overline{C}) + (\overline{A} * B * \overline{C}) +\\
-(A * \overline{C} * \overline{D}) + (A * \overline{C} * D) +\\
-(A * B * C) + (A * \overline{B} * C)
+(\overline{A} \land \overline{B} \land \overline{C}) \lor (\overline{A} \land B \land \overline{C}) +\\
+(A \land \overline{C} \land \overline{D}) \lor (A \land \overline{C} \land D) +\\
+(A \land B \land C) \lor (A \land \overline{B} \land C)
 \end{gather*}
 
-Om vi kastar om $B * C$ på första och sista raden och sätter in lite
+Om vi kastar om $B \land C$ på första och sista raden och sätter in lite
 förtydligande paranteser kan man se ett mönster. Här har jag även bytt plats på
 $\overline{B}$ och $B$ på sista raden:
 
 \begin{gather*}
-((\overline{A} * \overline{C}) * \overline{B}) + ((\overline{A} * \overline{C}) * B) +\\
-((A * \overline{C}) * \overline{D}) + ((A * \overline{C}) * D) +\\
-((A * C) * \overline{B}) + ((A * C) * B)
+((\overline{A} \land \overline{C}) \land \overline{B}) \lor ((\overline{A} \land \overline{C}) \land B) +\\
+((A \land \overline{C}) \land \overline{D}) \lor ((A \land \overline{C}) \land D) +\\
+((A \land C) \land \overline{B}) \lor ((A \land C) \land B)
 \end{gather*}
 
-Om vi behandlar $(\overline{A} * \overline{C})$ som en variabel på första raden;
-$(A * \overline{C})$ som en variabel på andra raden; $(A * C)$ som en variabel
+Om vi behandlar $(\overline{A} \land \overline{C})$ som en variabel på första raden;
+$(A \land \overline{C})$ som en variabel på andra raden; $(A \land C)$ som en variabel
 på sista så kan vi se att vi kan vi i princip får följande:
 
 \begin{gather*}
-X*Y + X*\overline{Y} = X(Y + \overline{Y}) = X(1) = X
+X*Y \lor X*\overline{Y} = X(Y \lor \overline{Y}) = X(1) = X
 \end{gather*}
 
 Det vill säga att $B$ inte har någon effekt på första raden; $D$ har ingen
@@ -55,45 +57,45 @@ effekt på andra raden; $B$ har ingen effekt på sista raden. Så vi tar bort de
 och får följande.
 
 \begin{gather*}
-(\overline{A} * \overline{C}) + (\overline{A} * \overline{C}) +\\
-(A * \overline{C}) + (A * \overline{C}) +\\
-(A * C) + (A * C)
+(\overline{A} \land \overline{C}) \lor (\overline{A} \land \overline{C}) +\\
+(A \land \overline{C}) \lor (A \land \overline{C}) +\\
+(A \land C) \lor (A \land C)
 \end{gather*}
 
 Tar vi bort dubbletterna så får vi följande
 
 \begin{gather*}
-(\overline{A} * \overline{C}) +
-(A * \overline{C}) +
-(A * C)
+(\overline{A} \land \overline{C}) +
+(A \land \overline{C}) +
+(A \land C)
 \end{gather*}
 
 Kasta om $A$ och $C$.
 
 \begin{gather*}
-(\overline{C} * \overline{A}) +
-(\overline{C} * A) +
-(A * C)
+(\overline{C} \land \overline{A}) +
+(\overline{C} \land A) +
+(A \land C)
 \end{gather*}
 
 Då kan vi applicera distributionslagen igen, då A inte har någon effekt på de
 första två grinderna.
 
 \begin{gather*}
-\overline{C} + (A * C)
+\overline{C} \lor (A \land C)
 \end{gather*}
 
 Då kan vi förenkla $A*C$ till $A$, för om C inte är falsk så är det ju givetvis
 positivt.
 
 \begin{gather*}
-\overline{C} + A
+\overline{C} \lor A
 \end{gather*}
 
 *Svar*
 
 \begin{gather*}
-\overline{C} + A
+\overline{C} \lor A
 \end{gather*}
 
 [[./slutgiltig.png]]
