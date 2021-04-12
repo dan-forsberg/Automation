@@ -1,1 +1,136 @@
-#+TITLE: U6
+#+OPTIONS: num:nil toc:nil
+#+LATEX: \setlength\parindent{0pt}
+#+LATEX_CLASS_OPTIONS: [a4paper, 11pt]
+#+AUTHOR: Dan Forsberg
+
+* Uppgift 6 - Återkopplade vippor
+
+[[./diagram.png]]
+
+/Rita tillståndsdiagram (ringar och pilar) för nedstående sekvenskrets.
+Utsignalerna för kretsen är tillståndsvariablerna q_2, q_1 och q_0./
+
+Ledning:
+1. Grinden kallas XNOR, dvs en EXOR-grind med påkopplad inverterar-funktion på
+   utgången.
+
+2. Kom ihåg att kretsen har åtta tillstånd definierade av q2, q1 och q0
+
+3. Starta med att definiera de booleska uttrycken för T, J, K och D
+
+4. Förenkla dessa så långt det är möjligt. Använd gärna en sanningstabell för
+   att kontrollera att förenklingarna stämmer.
+
+5. Rita upp en tabell med
+   a) Kolumner för nuvarande tillstånd (q2, q1 och q0)
+   b) Kolumner för T, J, K, D c) Kolumner för nästa tillstånd (q2+, q1+ och q0+)
+
+6. Gör analys av en kolumn i taget – inte en rad i taget!!!
+
+7. Notera att samtliga tillstånd skall vara med i tillståndsdiagrammet. Detta
+   innebär att det kan bli flera ”snurror”. Pricka av så att alla är med!
+
+* Analys av vippor
+** T-vippa
+
+En T-vippa är bara T xor Q.
+
+| T | Q | T xor Q | (T*'Q) + ('T*Q) |
+|---+---+---------+-----------------|
+| 0 | 0 |       0 |               0 |
+| 0 | 1 |       1 |               1 |
+| 1 | 0 |       1 |               1 |
+| 1 | 1 |       0 |               0 |
+|---+---+---------+-----------------|
+
+Det är samma som en JK-vippa, fast man har knutit T till båda J och K.
+
+** JK-vippan
+JK-vippa är en SR-vippa fast definierad för alla tillstånd.
+
+** D-vippa
+En D-vippa är bara en datavippa som skickar ut D när klockan är på.
+
+* Algebraiskt uttryck för vipporna
+
+T-vippa
+\begin{gather*}
+Q_{next} = (T \land \neg Q) \lor (\neg T \land Q)
+\end{gather*}
+
+JK-vippa
+\begin{gather*}
+Q_{next} = (J \land \neg Q) \lor (\neg K \land Q)
+\end{gather*}
+
+D-vippa
+\begin{gather*}
+Q_{next} = D
+\end{gather*}
+
+* Analys av kretsen
+
+För att kunna slutföra uppgiften måste vi först analysera de individuella
+delarna i kretsen, det vill säga ingångar och utgångar. Först börjar jag med att
+analysera ingångarna T, J, K och D för att kunna representera dessa algebraiskt.
+Därefter utgångarna Q_0, Q_1 och Q_2 (d.v.s vippornas tillstånd) då dessa är
+knutna till ingångarna.
+
+** Analys av ingångar
+$T$ kommer vara 0 eller 1 så länge $Q_0 = Q_2$. Det spelar ingen roll ifall båda
+är falska eller båda är sanna, så länge det är lika på båda sidor.
+
+\begin{align*}
+T &= Q_{0}\; xnor\; Q_{2}
+\end{align*}
+
+| Q_0 | Q_2 | T |
+|-----+-----+---|
+|   0 |   0 | 1 |
+|   0 |   1 | 0 |
+|   1 |   0 | 0 |
+|   1 |   1 | 1 |
+|-----+-----+---|
+
+$J$ kommer vara sann /enbart/ om $\overline{Q_{2}}Q_{1}$.
+$K$ är samma som $\overline{Q_{2}}$
+$D = \overline{(Q_{0} Q_{1})} + (\overline{Q_{0} Q_{2}})$
+
+Man kan applicera DeMorgans på $D$:s uttryck och får då
+$D = \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}$
+
+** Analys av Q_0, Q_1, Q_2
+Vi börjar från vänster och går mot höger och fokuserar på T-vippan, JK-vippan
+och D-vippan. Här representerar jag tillståndet som kommer efter klock-pulsen
+som $Q_{next}$.
+
+\begin{align*}
+T_{ut} = Q_{2}\\
+JK_{ut} = Q_{1}\\
+D_{ut} = Q_{0}
+\end{align*}
+
+\begin{align*}
+Q_{2_{next}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
+Q_{1_{next}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
+Q_{0_{next}} &= D
+\end{align*}
+
+** Slutsats
+
+Ingångar
+
+\begin{align*}
+T &= Q_{0} \odot Q_{2} \;\;\; \text{T är 1 om Q0 är lika med Q2}\\
+J &= \overline{Q_{2}} * Q_{1} \\
+K &= \overline{Q_{2}} \\
+D &= \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}
+\end{align*}
+
+Utgångar
+
+\begin{align*}
+Q_{2_{next}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
+Q_{1_{next}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
+Q_{0_{next}} &= D
+\end{align*}
