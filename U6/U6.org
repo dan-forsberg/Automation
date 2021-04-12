@@ -23,7 +23,8 @@ Ledning:
 
 5. Rita upp en tabell med
    a) Kolumner för nuvarande tillstånd (q2, q1 och q0)
-   b) Kolumner för T, J, K, D c) Kolumner för nästa tillstånd (q2+, q1+ och q0+)
+   b) Kolumner för T, J, K, D
+   c) Kolumner för nästa tillstånd (q2+, q1+ och q0+)
 
 6. Gör analys av en kolumn i taget – inte en rad i taget!!!
 
@@ -33,8 +34,10 @@ Ledning:
 * Analys av vippor
 ** T-vippa
 
-En T-vippa är bara T xor Q.
+En T-vippa ger resultet $Q_{ny} = T\; xor\; Q$. Eller i ord, Q blir sann så
+länge T skiljer sig från nuvarande Q.
 
+|---+---+---------+-----------------|
 | T | Q | T xor Q | (T*'Q) + ('T*Q) |
 |---+---+---------+-----------------|
 | 0 | 0 |       0 |               0 |
@@ -46,24 +49,41 @@ En T-vippa är bara T xor Q.
 Det är samma som en JK-vippa, fast man har knutit T till båda J och K.
 
 ** JK-vippan
-JK-vippa är en SR-vippa fast definierad för alla tillstånd.
+JK-vippa är en SR-vippa fast definierad för alla tillstånd. Det vill säga att
+$Q = K$, och $Q = 0$ när $J = 1$. Ifall $(J * K) = 1$ så "togglas" Q. Senare i
+uppgiften så kommer jag anta att standardvärdet på Q är 0, det vill säga av.
+
+Med hjälp av informationen att en T-vippa går enkelt att göra med hjälp av en
+JK-vippa genom att knyta insignalen till både J och K så underlättar vi arbetet
+med att göra en boolean algebraiskt uttryck för JK-vippor.
 
 ** D-vippa
-En D-vippa är bara en datavippa som skickar ut D när klockan är på.
+En D-vippa är bara en "datavippa" som skickar ut signalen D.
 
 * Algebraiskt uttryck för vipporna
 
-T-vippa
+** T-vippa
+
+En T-vippa går att representera $Q_{ny} = T \; xor \; Q$. Expanderar man det,
+eller sätter det i ord "Q är sann när T och Q skiljer sig åt" så får man ut:
+
 \begin{gather*}
-Q_{next} = (T \land \neg Q) \lor (\neg T \land Q)
+Q_{ny} = (T * \overline{Q}) + (\overline{T} * Q)
 \end{gather*}
 
-JK-vippa
+** JK-vippa
+
+Då vi vet att en T-vippa kan representera med en JK-vippa genom att knyta båda
+ingångarna till både J och K kan vi byta ut $T$ och $\overline{T}$ i uttrycket ovan.
+
 \begin{gather*}
-Q_{next} = (J \land \neg Q) \lor (\neg K \land Q)
+Q_{ny} = (J * \overline{Q}) + (\overline{K} * Q)
 \end{gather*}
 
-D-vippa
+** D-vippa
+
+En D-vippa håller bara signalen D.
+
 \begin{gather*}
 Q_{next} = D
 \end{gather*}
@@ -76,14 +96,16 @@ analysera ingångarna T, J, K och D för att kunna representera dessa algebraisk
 Därefter utgångarna Q_0, Q_1 och Q_2 (d.v.s vippornas tillstånd) då dessa är
 knutna till ingångarna.
 
-** Analys av ingångar
-$T$ kommer vara 0 eller 1 så länge $Q_0 = Q_2$. Det spelar ingen roll ifall båda
-är falska eller båda är sanna, så länge det är lika på båda sidor.
+** Analys av ingångar T, JK och D
+Värdet av $T$ kommer vara 1 $Q_0 = Q_2$. Det spelar ingen roll
+ifall båda är falska eller båda är sanna, så länge det är lika på båda sidor.
+Skiljer $Q_{0}$ och $Q_{2}$ sig så kommer $T = 0$.
 
 \begin{align*}
 T &= Q_{0}\; xnor\; Q_{2}
 \end{align*}
 
+|-----+-----+---|
 | Q_0 | Q_2 | T |
 |-----+-----+---|
 |   0 |   0 | 1 |
@@ -92,22 +114,42 @@ T &= Q_{0}\; xnor\; Q_{2}
 |   1 |   1 | 1 |
 |-----+-----+---|
 
-$J$ kommer vara sann /enbart/ om $\overline{Q_{2}}Q_{1}$.
+$J$ kommer vara sann enbart om $\overline{Q_{2}} * Q_{1}$.
+
+|-----+-----+---|
+| Q_1 | Q_2 | T |
+|-----+-----+---|
+|   0 |   0 | 0 |
+|   0 |   1 | 0 |
+|   1 |   0 | 1 |
+|   1 |   1 | 0 |
+|-----+-----+---|
+
 $K$ är samma som $\overline{Q_{2}}$
+
+|-----+---|
+| Q_2 | K |
+|-----+---|
+|   0 | 1 |
+|   1 | 0 |
+|-----+---|
+
 $D = \overline{(Q_{0} Q_{1})} + (\overline{Q_{0} Q_{2}})$
 
-Man kan applicera DeMorgans på $D$:s uttryck och får då
+Man kan applicera DeMorgans på $D$:s vänstra och högra uttryck och får
+slutgiltningen då
 $D = \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}$
 
-** Analys av Q_0, Q_1, Q_2
+** Analys av utgångarna Q_0, Q_1, Q_2
 Vi börjar från vänster och går mot höger och fokuserar på T-vippan, JK-vippan
-och D-vippan. Här representerar jag tillståndet som kommer efter klock-pulsen
-som $Q_{next}$.
+och D-vippan.
+
+Utgångarna Q_0, Q_1 och Q_2 är kopplade till de tre vipporna enligt nedan.
 
 \begin{align*}
-T_{ut} = Q_{2}\\
-JK_{ut} = Q_{1}\\
-D_{ut} = Q_{0}
+T_{ut} &= Q_{2}\\
+JK_{ut} &= Q_{1}\\
+D_{ut} &= Q_{0}
 \end{align*}
 
 \begin{align*}
@@ -134,3 +176,40 @@ Q_{2_{next}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarro
 Q_{1_{next}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
 Q_{0_{next}} &= D
 \end{align*}
+
+** Svar
+Med detta kan vi rita en sanningstabell för de olika tillstånden och därefter
+ett tillståndsdiagram. Här har jag kortat ner uträkningarna för $T$, $J$, $K$
+och $D$. Men precis som i ledningen analyserade jag utfallen kolumn för kolumn,
+inte rad för rad.
+
+|-----+-----+-----+---+---+---+---+------------+------------+------------|
+| Q_0 | Q_1 | Q_2 | T | J | K | D | Q_0_{next} | Q_1_{next} | Q_2_{next} |
+|-----+-----+-----+---+---+---+---+------------+------------+------------|
+|   0 |   0 |   0 | 1 | 0 | 1 | 1 |          1 |          0 |          1 |
+|   0 |   0 |   1 | 0 | 0 | 0 | 1 |          1 |          0 |          1 |
+|   0 |   1 |   0 | 1 | 1 | 1 | 1 |          1 |          0 |          1 |
+|   0 |   1 |   1 | 1 | 1 | 1 | 1 |          1 |          0 |          1 |
+|   0 |   1 |   1 | 0 | 0 | 0 | 1 |          1 |          1 |          1 |
+|   1 |   0 |   0 | 0 | 0 | 1 | 1 |          1 |          0 |          0 |
+|   1 |   0 |   1 | 1 | 0 | 0 | 1 |          1 |          0 |          0 |
+|   1 |   1 |   0 | 0 | 1 | 1 | 1 |          1 |          0 |          0 |
+|   1 |   1 |   1 | 1 | 0 | 0 | 0 |          0 |          1 |          0 |
+|-----+-----+-----+---+---+---+---+------------+------------+------------|
+
+Om vi bara fokuserar på det intressanta, alltså vilket tillstånd Q_{0_{next}},
+Q_{1_{next}} och Q_{2_{next}} får så kan vi rita upp en tillståndsdiagram.
+
+|-----+-----+-----+------------+------------+------------|
+| Q_0 | Q_1 | Q_2 | Q_0_{next} | Q_1_{next} | Q_2_{next} |
+|-----+-----+-----+------------+------------+------------|
+|   0 |   0 |   0 |          1 |          0 |          1 |
+|   0 |   0 |   1 |          1 |          0 |          1 |
+|   0 |   1 |   0 |          1 |          0 |          1 |
+|   0 |   1 |   1 |          1 |          0 |          1 |
+|   0 |   1 |   1 |          1 |          1 |          1 |
+|   1 |   0 |   0 |          1 |          0 |          0 |
+|   1 |   0 |   1 |          1 |          0 |          0 |
+|   1 |   1 |   0 |          1 |          0 |          0 |
+|   1 |   1 |   1 |          0 |          1 |          0 |
+|-----+-----+-----+------------+------------+------------|
