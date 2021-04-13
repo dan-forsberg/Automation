@@ -30,7 +30,7 @@ Ledning:
 
 7. Notera att samtliga tillstånd skall vara med i tillståndsdiagrammet. Detta
    innebär att det kan bli flera ”snurror”. Pricka av så att alla är med!
-
+\newpage
 * Analys av vippor
 ** T-vippa
 
@@ -38,7 +38,7 @@ En T-vippa ger resultet $Q_{ny} = T\; xor\; Q$. Eller i ord, Q blir sann så
 länge T skiljer sig från nuvarande Q.
 
 |---+---+---------+-----------------|
-| T | Q | T xor Q | (T*'Q) + ('T*Q) |
+| T | Q | T xor Q | (T'Q) + ('TQ)  |
 |---+---+---------+-----------------|
 | 0 | 0 |       0 |               0 |
 | 0 | 1 |       1 |               1 |
@@ -50,12 +50,12 @@ Det är samma som en JK-vippa, fast man har knutit T till båda J och K.
 
 ** JK-vippan
 JK-vippa är en SR-vippa fast definierad för alla tillstånd. Det vill säga att
-$Q = K$, och $Q = 0$ när $J = 1$. Ifall $(J * K) = 1$ så "togglas" Q. Senare i
-uppgiften så kommer jag anta att standardvärdet på Q är 0, det vill säga av.
+$Q = K$ förutom när $J = 1$ då blir $Q = 0$. Ifall $(J * K) = 1$ så "togglas" Q. Senare i
+uppgiften så kommer jag anta att standardvärdet på Q är 0, det vill säga av.\\
 
 Med hjälp av informationen att en T-vippa går enkelt att göra med hjälp av en
 JK-vippa genom att knyta insignalen till både J och K så underlättar vi arbetet
-med att göra en boolean algebraiskt uttryck för JK-vippor.
+med att göra ett uttryck för JK-vippor.
 
 ** D-vippa
 En D-vippa är bara en "datavippa" som skickar ut signalen D.
@@ -85,7 +85,7 @@ Q_{ny} = (J * \overline{Q}) + (\overline{K} * Q)
 En D-vippa håller bara signalen D.
 
 \begin{gather*}
-Q_{next} = D
+Q_{ny} = D
 \end{gather*}
 
 * Analys av kretsen
@@ -97,7 +97,7 @@ Därefter utgångarna Q_0, Q_1 och Q_2 (d.v.s vippornas tillstånd) då dessa ä
 knutna till ingångarna.
 
 ** Analys av ingångar T, JK och D
-Värdet av $T$ kommer vara 1 $Q_0 = Q_2$. Det spelar ingen roll
+Värdet av $T$ kommer vara 1 när $Q_0 = Q_2$. Det spelar ingen roll
 ifall båda är falska eller båda är sanna, så länge det är lika på båda sidor.
 Skiljer $Q_{0}$ och $Q_{2}$ sig så kommer $T = 0$.
 
@@ -114,7 +114,7 @@ T &= Q_{0}\; xnor\; Q_{2}
 |   1 |   1 | 1 |
 |-----+-----+---|
 
-$J$ kommer vara sann enbart om $\overline{Q_{2}} * Q_{1}$.
+$J$ kommer vara sann enbart om $Q_{1} * \overline{Q_{2}}$.
 
 |-----+-----+---|
 | Q_1 | Q_2 | T |
@@ -134,11 +134,12 @@ $K$ är samma som $\overline{Q_{2}}$
 |   1 | 0 |
 |-----+---|
 
-$D = \overline{(Q_{0} Q_{1})} + (\overline{Q_{0} Q_{2}})$
+\begin{align*}
+D = \overline{(Q_{0} Q_{1})} + (\overline{Q_{0} Q_{2}})
+\end{align*}
 
 Man kan applicera DeMorgans på $D$:s vänstra och högra uttryck och får
-slutgiltningen då
-$D = \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}$
+slutgiltningen då $D = \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}$
 
 ** Analys av utgångarna Q_0, Q_1, Q_2
 Vi börjar från vänster och går mot höger och fokuserar på T-vippan, JK-vippan
@@ -153,9 +154,9 @@ D_{ut} &= Q_{0}
 \end{align*}
 
 \begin{align*}
-Q_{2_{next}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
-Q_{1_{next}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
-Q_{0_{next}} &= D
+Q_{2_{ny}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
+Q_{1_{ny}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
+Q_{0_{ny}} &= D
 \end{align*}
 
 ** Slutsats
@@ -163,7 +164,7 @@ Q_{0_{next}} &= D
 Ingångar
 
 \begin{align*}
-T &= Q_{0} \odot Q_{2} \;\;\; \text{T är 1 om Q0 är lika med Q2}\\
+T &= Q_{0} \odot Q_{2} \;\;\; \text{(T är 1 om Q0 är lika med Q2)}\\
 J &= \overline{Q_{2}} * Q_{1} \\
 K &= \overline{Q_{2}} \\
 D &= \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}
@@ -172,9 +173,9 @@ D &= \overline{Q_{0}} + \overline{Q_{1}} + \overline{Q_{2}}
 Utgångar
 
 \begin{align*}
-Q_{2_{next}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
-Q_{1_{next}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
-Q_{0_{next}} &= D
+Q_{2_{ny}} &= (T*\overline{Q_{2}}) + (\overline{T} * Q_{2}) \Longleftrightarrow T \oplus Q_{2}\\
+Q_{1_{ny}} &= (J * \overline{Q_{1}}) + (\overline{K} * Q_{1})\\
+Q_{0_{ny}} &= D
 \end{align*}
 
 ** Svar
@@ -183,33 +184,38 @@ ett tillståndsdiagram. Här har jag kortat ner uträkningarna för $T$, $J$, $K
 och $D$. Men precis som i ledningen analyserade jag utfallen kolumn för kolumn,
 inte rad för rad.
 
-|-----+-----+-----+---+---+---+---+------------+------------+------------|
-| Q_0 | Q_1 | Q_2 | T | J | K | D | Q_0_{next} | Q_1_{next} | Q_2_{next} |
-|-----+-----+-----+---+---+---+---+------------+------------+------------|
-|   0 |   0 |   0 | 1 | 0 | 1 | 1 |          1 |          0 |          1 |
-|   0 |   0 |   1 | 0 | 0 | 0 | 1 |          1 |          0 |          1 |
-|   0 |   1 |   0 | 1 | 1 | 1 | 1 |          1 |          0 |          1 |
-|   0 |   1 |   1 | 1 | 1 | 1 | 1 |          1 |          0 |          1 |
-|   0 |   1 |   1 | 0 | 0 | 0 | 1 |          1 |          1 |          1 |
-|   1 |   0 |   0 | 0 | 0 | 1 | 1 |          1 |          0 |          0 |
-|   1 |   0 |   1 | 1 | 0 | 0 | 1 |          1 |          0 |          0 |
-|   1 |   1 |   0 | 0 | 1 | 1 | 1 |          1 |          0 |          0 |
-|   1 |   1 |   1 | 1 | 0 | 0 | 0 |          0 |          1 |          0 |
-|-----+-----+-----+---+---+---+---+------------+------------+------------|
+|-----+-----+-----+---+---+---+---+----------+----------+----------|
+| Q_0 | Q_1 | Q_2 | T | J | K | D | Q_0_{ny} | Q_1_{ny} | Q_2_{ny} |
+|-----+-----+-----+---+---+---+---+----------+----------+----------|
+|   0 |   0 |   0 | 1 | 0 | 1 | 1 |        1 |        0 |        1 |
+|   0 |   0 |   1 | 0 | 0 | 0 | 1 |        1 |        0 |        1 |
+|   0 |   1 |   0 | 1 | 1 | 1 | 1 |        1 |        0 |        1 |
+|   0 |   1 |   1 | 1 | 1 | 1 | 1 |        1 |        0 |        1 |
+|   0 |   1 |   1 | 0 | 0 | 0 | 1 |        1 |        1 |        1 |
+|   1 |   0 |   0 | 0 | 0 | 1 | 1 |        1 |        0 |        0 |
+|   1 |   0 |   1 | 1 | 0 | 0 | 1 |        1 |        0 |        0 |
+|   1 |   1 |   0 | 0 | 1 | 1 | 1 |        1 |        0 |        0 |
+|   1 |   1 |   1 | 1 | 0 | 0 | 0 |        0 |        1 |        0 |
+|-----+-----+-----+---+---+---+---+----------+----------+----------|
 
-Om vi bara fokuserar på det intressanta, alltså vilket tillstånd Q_{0_{next}},
-Q_{1_{next}} och Q_{2_{next}} får så kan vi rita upp en tillståndsdiagram.
+Om vi bara fokuserar på det intressanta, alltså vilket tillstånd Q_{0_{ny}},
+Q_{1_{ny}} och Q_{2_{ny}} får så kan vi rita upp en tillståndsdiagram.
 
-|-----+-----+-----+------------+------------+------------|
-| Q_0 | Q_1 | Q_2 | Q_0_{next} | Q_1_{next} | Q_2_{next} |
-|-----+-----+-----+------------+------------+------------|
-|   0 |   0 |   0 |          1 |          0 |          1 |
-|   0 |   0 |   1 |          1 |          0 |          1 |
-|   0 |   1 |   0 |          1 |          0 |          1 |
-|   0 |   1 |   1 |          1 |          0 |          1 |
-|   0 |   1 |   1 |          1 |          1 |          1 |
-|   1 |   0 |   0 |          1 |          0 |          0 |
-|   1 |   0 |   1 |          1 |          0 |          0 |
-|   1 |   1 |   0 |          1 |          0 |          0 |
-|   1 |   1 |   1 |          0 |          1 |          0 |
-|-----+-----+-----+------------+------------+------------|
+|-----+-----+-----+----------+----------+----------|
+| Q_0 | Q_1 | Q_2 | Q_0_{ny} | Q_1_{ny} | Q_2_{ny} |
+|-----+-----+-----+----------+----------+----------|
+|   0 |   0 |   0 |        1 |        0 |        1 |
+|   0 |   0 |   1 |        1 |        0 |        1 |
+|   0 |   1 |   0 |        1 |        0 |        1 |
+|   0 |   1 |   1 |        1 |        0 |        1 |
+|   0 |   1 |   1 |        1 |        1 |        1 |
+|   1 |   0 |   0 |        1 |        0 |        0 |
+|   1 |   0 |   1 |        1 |        0 |        0 |
+|   1 |   1 |   0 |        1 |        0 |        0 |
+|   1 |   1 |   1 |        0 |        1 |        0 |
+|-----+-----+-----+----------+----------+----------|
+
+
+Uppställt i ett tillståndsdiagram får vi följande.
+
+[[./resultat.png]]
