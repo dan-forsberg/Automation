@@ -1,56 +1,72 @@
-#+OPTIONS: num:nil toc:nil \n:t
+#+OPTIONS: num:nil toc:nil
 #+LATEX: \setlength\parindent{0pt}
-* Uppgift 2
+
+* TODO Uppgift 2 Fixa . -> ,, fixa $$ till riktig align. Kolla stavning och dubbelkolla med boken vad den säger om spänning i RLC
 I denna uppgift kommer jag använda mig utav följande formler
 
 Ohms lag vid likström:
-$U = I \times R$
-$I = U / R$
-$R = U / I$
+
+\begin{align*}
+U &= I \times R\\
+I &= U / R\\
+R &= U / I
+\end{align*}
 
 Ohms lag vid växelström:
-$U = I \times Z$
-$I = U / Z$
-$Z = U / I$
+\begin{align*}
+U &= I \times Z\\
+I &= U / Z\\
+Z &= U / I
+\end{align*}
 
 Impendansen i en RLC-krets:
-$Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}$
+\begin{align*}
+Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}
+\end{align*}
 
 Resonansfrekvens
-$f = \frac{1}{2 \pi \sqrt{LC}}$
+\begin{align*}
+f = \frac{1}{2 \pi \sqrt{LC}}
+\end{align*}
 
-Den totala spänningen i RLC-krets om U_R och U_L är känt
-$U_{tot} = \sqrt{U_{R}^{2} + U_{L}^{2}}$
+Den totala spänningen i RLC-krets om U_R och U_L är känt ???????
+\begin{align*}
+U_{tot} = \sqrt{U_{R}^{2} + U_{L}^{2}}
+\end{align*}
 
-Reaktans och impendans
-$X_{L} = 2 \pi fL$
-$X_{C} = \frac{1}{2  \pi  fC}$
+Reaktans och impedans
 
-$U_{L} = I \times X_{L} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{L} = \frac{U_{L}}{I}$
-$U_{C} = I \times X_{C} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{C} = \frac{U_{C}}{I}$
+\begin{align*}
+X_{L} &= 2 \pi fL\\
+X_{C} &= \frac{1}{2  \pi  fC}\\
+\\
+U_{L} &= I \times X_{L} \;\;\;\;\;\; <&=> \;\;\;\;\;\; X_{L} &= \frac{U_{L}}{I}\\
+U_{C} &= I \times X_{C} \;\;\;\;\;\; <&=> \;\;\;\;\;\; X_{C} &= \frac{U_{C}}{I}\\
+\end{align*}
 \newpage
 
 ** Uppgifterna och lösningar
-/a) En krets består av motståndet R=60 Ohm, spolen L (okänd), kondensatorn C (okänd) och en växelströmsgenerator med effektivvärdet U (okänt) med frekvensen f=50 Hz, se figur./
+/a) En krets består av motståndet R=60 Ohm, spolen L (okänd), kondensator C (okänd) och en växelströmsgenerator med effektivvärdet U (okänt) med frekvensen f=50 Hz, se figur./
 
 #+CAPTION: Bild på krets 1
 [[./krets2.png]]
-/Samtliga värden i figuren är effektivvärden och angivna med två värdesiffror. Räkna ut U./
+/Samtliga värden i figuren är effektivvärden och angivna med två värdesiffror.
+Räkna ut U./
 
 $U_{tot} = \sqrt{U_{R}^{2} + (U_{L} - U_{C})^{2}}$
 $U_{tot} = \sqrt{30^{2} + (80-120)^{2}}$
 $U_{tot} = 50 V$
 
-*Svar: $U$ = 50.00 V*.
+*Svar: $U$ = 50,0 V*.
 
 /b) Beräkna strömmen, reaktansen och impedansen i kretsen ovan./
 
 Då komponenterna är seriekopplade så är strömmen samma över de alla tre. Vi kan räkna ut strömmen över resistorn enkelt.
 
 $I_{R} = \frac{U_{R}}{R}$
-$I_{R} = \frac{30}{60} = 0.5 A$
+$I_{R} = \frac{30}{60} = 0,50 A$
 
-För att räkna ut impendansen och reaktansen kan vi använda formlerna nedan.
+För att räkna ut impedansen och reaktansen kan vi använda formlerna nedan.
 
 $U_{L} = I \times X_{L} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{L} = \frac{U_{L}}{I}$
 $U_{C} = I \times X_{C} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{C} = \frac{U_{C}}{I}$

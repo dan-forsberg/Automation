@@ -225,4 +225,4 @@ $P = U \times I$
 $P_{25W} = U_{25W} \times I_{tot} = 162,932 V \times 0,77 A \approx 12,546$
 $P_{60W} = U_{60W} \times I_{tot} = 67,914 V \times 0,77 A \approx 5,229$
 
-*Svar*: $L_{25W}$ lyser med ca 50% styrka, $L_{60W}$ lyser med ca 8%.
+*Svar*: $L_{25W}$ lyser med ca 50% styrka, $L_{60W}$ lyser med ca 8,7%.
