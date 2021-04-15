@@ -1,7 +1,7 @@
 #+OPTIONS: num:nil toc:nil
 #+LATEX: \setlength\parindent{0pt}
 
-* TODO Uppgift 2 Fixa . -> ,, fixa $$ till riktig align. Kolla stavning och dubbelkolla med boken vad den säger om spänning i RLC
+* TODO Uppgift 2 Fixa . -> , Kolla stavning och dubbelkolla med boken vad den säger om spänning i RLC
 I denna uppgift kommer jag använda mig utav följande formler
 
 Ohms lag vid likström:
@@ -21,17 +21,17 @@ Z &= U / I
 
 Impendansen i en RLC-krets:
 \begin{align*}
-Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}
+Z &= \sqrt{R^{2} + (X_{L} - X_{C})^{2}}
 \end{align*}
 
 Resonansfrekvens
 \begin{align*}
-f = \frac{1}{2 \pi \sqrt{LC}}
+f &= \frac{1}{2 \pi \sqrt{LC}}
 \end{align*}
 
 Den totala spänningen i RLC-krets om U_R och U_L är känt ???????
 \begin{align*}
-U_{tot} = \sqrt{U_{R}^{2} + U_{L}^{2}}
+U_{tot} &= \sqrt{U_{R}^{2} + U_{L}^{2}}
 \end{align*}
 
 Reaktans och impedans
@@ -40,133 +40,161 @@ Reaktans och impedans
 X_{L} &= 2 \pi fL\\
 X_{C} &= \frac{1}{2  \pi  fC}\\
 \\
-U_{L} &= I \times X_{L} \;\;\;\;\;\; <&=> \;\;\;\;\;\; X_{L} &= \frac{U_{L}}{I}\\
-U_{C} &= I \times X_{C} \;\;\;\;\;\; <&=> \;\;\;\;\;\; X_{C} &= \frac{U_{C}}{I}\\
+U_{L} &= I \times X_{L} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{L} = \frac{U_{L}}{I}\\
+U_{C} &= I \times X_{C} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{C} = \frac{U_{C}}{I}\\
 \end{align*}
 \newpage
 
 ** Uppgifterna och lösningar
-/a) En krets består av motståndet R=60 Ohm, spolen L (okänd), kondensator C (okänd) och en växelströmsgenerator med effektivvärdet U (okänt) med frekvensen f=50 Hz, se figur./
+/a) En krets består av motståndet R=60 Ohm, spolen L (okänd), kondensator C/
+/(okänd) och en växelströmsgenerator med effektivvärdet U (okänt) med frekvensen/
+/f=50 Hz, se figur./
 
 #+CAPTION: Bild på krets 1
 [[./krets2.png]]
 /Samtliga värden i figuren är effektivvärden och angivna med två värdesiffror.
 Räkna ut U./
 
-Gör ingen skillnad om jag drar *sqrt(2) på värdena och sen /sqrt(2) på slutresultatet.
+Då det är effektivvärden så kan vi använda formeln nedan. Hade det varit
+maxvärden så hade vi behövt ta resultat delat med $\sqrt{2}$ för att få
+effektivvärdet.
 
-$U_{tot} = \sqrt{U_{R}^{2} + (U_{L} - U_{C})^{2}}$
-$U_{tot} = \sqrt{30^{2} + (80-120)^{2}}$
-$U_{tot} = 50 V$
+\begin{align*}
+U_{tot} &= \sqrt{U_{R}^{2} + (U_{L} - U_{C})^{2}}\\
+U_{tot} &= \sqrt{30^{2} + (80-120)^{2}}\\
+U_{tot} &= 50 V
+\end{align*}
 
-*Svar: $U$ = 50,0 V*.
+*Svar: $U$ &= 50,0 V*. Not till Mikael: Då U_c är 120 V så har vi tre
+värdesiffror i indatat, därmed bör svaret ha tre värdesiffror.
 
 /b) Beräkna strömmen, reaktansen och impedansen i kretsen ovan./
 
-Då komponenterna är seriekopplade så är strömmen samma över de alla tre. Vi kan räkna ut strömmen över resistorn enkelt.
+Då komponenterna är seriekopplade så är strömmen samma över de alla tre. Vi kan
+räkna ut strömmen över resistorn enkelt.
 
-$I_{R} = \frac{U_{R}}{R}$
-$I_{R} = \frac{30}{60} = 0,50 A$
+\begin{align*}
+I_{R} &= \frac{U_{R}}{R}\\
+I_{R} &= \frac{30}{60} = 0{,}50 A
+\end{align*}
 
 För att räkna ut impedansen och reaktansen kan vi använda formlerna nedan.
 
-$U_{L} = I \times X_{L} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{L} = \frac{U_{L}}{I}$
-$U_{C} = I \times X_{C} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{C} = \frac{U_{C}}{I}$
+\begin{align*}
+U_{L} &= I \times X_{L} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{L} = \frac{U_{L}}{I}\\
+U_{C} &= I \times X_{C} \;\;\;\;\;\; <=> \;\;\;\;\;\; X_{C} = \frac{U_{C}}{I}
+\end{align*}
 
 Vi vet redan $U_{L}$ och $U_{C}$.
 
-$X_{L} = U_{L} / I = 80 V / 0.5 A = 160 \Omega$
-$X_{C} = U_{C} / I = 120 V / 0.5 A = 240 \Omega$
+\begin{align*}
+X_{L} &= U_{L} / I = 80 V / 0{,}5 A = 160 \Omega\\
+X_{C} &= U_{C} / I = 120 V / 0{,}5 A = 240 \Omega
+\end{align*}
 
 *Rimlighetstest*
 
-$I = U / Z$
-$Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}$
+\begin{align*}
+I &= U / Z\\
+Z &= \sqrt{R^{2} + (X_{L} - X_{C})^{2}}
+\end{align*}
 
 Definiera först $Z$:
-$Z = \sqrt{60^2 + (160 - 240)^{2}}$
-$Z = \sqrt{3600 + 6400}$
-$Z = 100$
 
-$I = 50 / 100$
-$I = .5$
+\begin{align*}
+Z &= \sqrt{60^2 + (160 - 240)^{2}}\\
+Z &= \sqrt{3600 + 6400}\\
+Z &= 100\\
+\\
+I &= 50 / 100\\
+I &= 0{,}5
+\end{align*}
 
 Vilket stämmer med det vi tidigare räknat ut.
 
-*Svar: $I$ = 0.500 A, $X_{L}$ = 160.00 \Omega och $X_{C}$ = 240.00 \Omega.*
+*Svar: $I$ = 500 mA, $X_{L}$ = 160 \Omega och $X_{C}$ = 240 \Omega.*
 
 /c) Nedan finns en ny krets. Beräkna resonansfrekvensen f./
 
 [[./krets3.png]]
 
-Resonansfrekvensen är definierad enligt formeln nedan.
-$f = \frac{1}{2 \pi \sqrt{LC}}$
+Resonansfrekvensen är definierad enligt formeln nedan.\\
+$f &= \frac{1}{2 \pi \sqrt{LC}}$
 
 Så vi stoppar in de variabler vi känner till enligt bilden.
 
-$f = \frac{1}{2 \pi \sqrt{80e-3 \times 2e-6}}$
-$f = 397.8873577 \approx 397.887$ Hz
+\begin{align*}
+f &= \frac{1}{2 \pi \sqrt{80 * 10^{-3} \times 2*10^{-6}}}\\
+f &= 397{,}8873577 \approx 397{,}887 Hz
+\end{align*}
 
-($80e-3$ är då $80 \times 10^{-3}$, jag kommer använda det framöver för att spara plats)
-
-*Svar: Resonansfrekvensen är /ungefär/ 397.887 Hz.*
+*Svar: Resonansfrekvensen är ungefär 397 Hz.*
 
 /d) Om U = 90 V, vad blir strömmen I i den nya kretsen. Använd frekvensen du räknade ut i c/
 
 Vi kan använda formlerna nedan för att räkna ut detta.
 
-$I = \frac{U}{Z}$
-$Z = \sqrt{R^{2} + (X_{L} - X_{C})^{2}}$
+\begin{align*}
+I &= \frac{U}{Z}\\
+Z &= \sqrt{R^{2} + (X_{L} - X_{C})^{2}}
+\end{align*}
 
 Men vi vet inte $X_{L}$ eller $X_{C}$ ännu.
 
-$X_{L} = 2 \pi fL$
-$X_{L} = 2 \pi  \times 397.887 \times 0.08$
-$X_{L} \approx 199.998 \Omega$
-
-$X_{C} = \frac{1}{2 \pi fC}$
-$X_{C} = \frac{1}{2 \pi \times 397.887 \times 2e-6}$
-$X_{C} \approx 0.005 \Omega$
-
-$Z = \sqrt{60^{2} + (199.998 - 0.005)^{2}}$
-$Z \approx 208.756$
-
-$I = \frac{90}{208.756} \approx 0.43 A$
+\begin{align*}
+X_{L} &= 2 \pi fL\\
+X_{L} &= 2 \pi  \times 397{,}887 \times 0{,}08\\
+X_{L} &\approx 199{,}998 \Omega\\
+\\
+X_{C} &= \frac{1}{2 \pi fC}\\
+X_{C} &= \frac{1}{2 \pi \times 397{,}887 \times 2e-6}\\
+X_{C} &\approx 0{,}00499 \Omega\\
+\\
+Z &= \sqrt{60^{2} + (199{,}998 - 0{,}005)^{2}}\\
+Z &\approx 208{,}799\\
+\\
+I &= \frac{90}{208{,}756} = 0{,}43103 A\\
+\end{align*}
 
 *Rimlighetstest*:
-$U_{tot} = Z \times I$
-$U_{tot} = 208.756 \times 0.43 = 89.76508 \approx 90$
+\begin{align*}
+U_{tot} &= Z \times I\\
+U_{tot} &= 208{,}756 \times 0{,}431 = 89{,}9738 \approx 90
+\end{align*}
 
 Det blir en viss skillnad på grund av avrundningsfel, men det är nära nog.
 
-*Svar: I = 0.43 A*
+*Svar: I = 431 mA*
 
 /e) Beräkna även U_R, U_L och U_C för den nya kretsen. Använd frekvensen du räknade ut i c/
 
-$U_{R} = I * R$
-$U_{R} = 0.43 A * 60 \Omega = 2.85 V$
+\begin{align*}
+U_{R} &= I * R\\
+U_{R} &= 0{,}43103 A * 60 \Omega = 25{,}8618 V\\
+\\
+U_{L} &= I * X_{L}\\
+\\
+X_{L} &= 2 \pi fL\\
+X_{L} &= 2 \pi  \times 397{,}887 \times 0{,}08\\
+X_{L} &\approx 199{,}999 \Omega\\
+\\
+U_{L} &= 0{,}43103 A * 199{,}99 \Omega = 86{,}201\\
+\\
+U_{C} &= I * X_{C}\\
+\\
+X_{C} &= \frac{1}{2 \pi fC}\\
+X_{C} &= \frac{1}{2 \pi \times 397{,}887 \times 2e-6}\\
+X_{C} &= 200{,}000 \Omega\\
+\\
+U_{C} &= 0{,}43103 A * 200 \Omega = 86{,}206 V
+\end{align*}
 
-$U_{L} = I * X_{L}$
-
-$X_{L} = 2 \pi fL$
-$X_{L} = 2 \pi  \times 397.887 \times 0.08$
-$X_{L} \approx 199.998 \Omega$
-
-$U_{L} = 0.43 A * 199.998 \Omega = 8.60V$
-
-$U_{C} = I * X_{C}$
-
-$X_{C} = \frac{1}{2 \pi fC}$
-$X_{C} = \frac{1}{2 \pi \times 397.887 \times 2e-6}$
-$X_{C} \approx 0.005 \Omega$
-
-$U_{C} = 0.43 A * 0.005 \Omega = 8.98 V$
-
-*Svar: U_R = 2.85 V, U_L = 8.60 V, U_C = 8.98 V*
+*Svar: U_R = 25,8 V, U_L = 86,2 V, U_C = 86,2 V*
 
 ** Svar
-a) 50.00 V
-b) I = 0.50 A, X_L = 160.00 \Omega och X_C = 240.00 \Omega
+KOLLA ÖVER DETTA
+a) 50,0 V
+b) I &= 0.50 A, X_L &= 160.00 \Omega och X_C &= 240.00 \Omega
 c) Resonansfrekvensen är ungefär 397.887 Hz.
 d) 0.43 A
-e) U_R = 2.85 V, U_L = 8.60 V och U_C = 8.98 V
+e) U_R &= 2.85 V, U_L &= 8.60 V och U_C &= 8.98 V
