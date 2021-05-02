@@ -1,5 +1,5 @@
 (TeX-add-style-hook
- "Forsberg_Dan_U5_1"
+ "Forsberg_Dan_U5_2"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "a4paper" "11pt")))
@@ -31,12 +31,12 @@
     "capt-of"
     "hyperref")
    (LaTeX-add-labels
-    "sec:org290b204"
-    "sec:org7ae4046"
-    "sec:org29af450"
-    "sec:orgfbedf6e"
-    "sec:orgd7e37ed"
-    "sec:orgdab493e"
-    "sec:org75179d2"))
+    "sec:org4c44959"
+    "sec:org5a8377b"
+    "sec:org895c500"
+    "sec:orgdcb5adf"
+    "sec:org966805b"
+    "sec:orge2c2a3c"
+    "sec:org771ddb4"))
  :latex)
 
